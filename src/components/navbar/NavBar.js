@@ -5,7 +5,7 @@ export default function NavBar() {
 	return (
 		<div className='ui large inverted pointing secondary menu'>
 			<div className='ui container'>
-				<Link to='/' className='active item'>
+				<Link to='/' className='item'>
 					Upthrust Tutors
 				</Link>
 				<Link to='/become-a-tutor' className='item'>

@@ -9,7 +9,10 @@ import Login from './components/login/Login';
 function App() {
 	return (
 		<>
-			<Homepage />
+			<Route path='/' exact component={Homepage} />
+			<Route path='/become-a-tutor' component={TutorRegistration} />
+			<Route path='/get-a-tutor' component={ParentRegistration} />
+			<Route path='/login' component={Login} />
 			<Footer />
 		</>
 	);

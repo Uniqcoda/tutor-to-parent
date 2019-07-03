@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form, Icon } from 'semantic-ui-react';
 import NavBar from '../navbar/NavBar';
-import Background from '../../images/childnteacher.jpg';
 
 export default function HomePage() {
 	return (
