@@ -18,7 +18,7 @@ export default function NavBar() {
 					Contact
 				</Link>
 				<div className='right item'>
-					<Link to='/login' className='ui inverted button' role='button'>
+					<Link to='/login' style={{ backgroundColor: '#b32424' }} className='ui inverted button' role='button'>
 						Log in
 					</Link>
 				</div>

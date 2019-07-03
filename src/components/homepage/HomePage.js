@@ -11,34 +11,41 @@ export default function HomePage() {
 				<div
 					className='ui inverted vertical center aligned segment'
 					style={{
-						backgroundImage: 'no-repeat left/cover url(' + { Background } + ')',
+						backgroundImage: "url('/assets/childnteacher.jpg')",
+						backgroundPosition: 'center',
+						backgroundSize: 'cover',
 						width: '100%',
 						minHeight: '700px',
-						padding: '1em 0em',
+						padding: '0px',
 					}}
 				>
-					<header>
-						<NavBar />
-					</header>
+					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '700px' }}>
+						<header>
+							<NavBar />
+						</header>
 
-					<div className='ui text container'>
-						<h1
-							className='ui inverted header'
-							style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: '0px', marginTop: '3em' }}
-						>
-							Find a Tutor
-						</h1>
-						<h2 className='ui inverted header' style={{ fontSize: '1.7em', fontWeight: 'normal', marginTop: '1.5em' }}>
-							Private lessons/trainings for every child
-						</h2>
-						<Form>
-							<Form.Group>
-								<input placeholder='What do you want to learn?' />
-								<Button type='submit' primary>
-									<Icon name='search' />
-								</Button>
-							</Form.Group>
-						</Form>
+						<div className='ui text container'>
+							<h1
+								className='ui inverted header'
+								style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: '0px', marginTop: '3em' }}
+							>
+								Find a Tutor
+							</h1>
+							<h2
+								className='ui inverted header'
+								style={{ fontSize: '1.7em', fontWeight: 'normal', marginTop: '1.5em' }}
+							>
+								Private lessons/trainings for every child
+							</h2>
+							<Form>
+								<Form.Group>
+									<input placeholder='What do you want to learn?' />
+									<Button type='submit' primary>
+										<Icon name='search' />
+									</Button>
+								</Form.Group>
+							</Form>
+						</div>
 					</div>
 				</div>
 			</div>
