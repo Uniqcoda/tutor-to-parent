@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Form, Button, Segment } from 'semantic-ui-react';
 
-function RegistrationForm() {
+export default function ParentRegistrationForm() {
 	const [values, setValues] = useState({
+		// title: '',
 		firstName: '',
 		lastName: '',
 		email: '',
@@ -10,6 +11,8 @@ function RegistrationForm() {
 		gender: '',
 		password: '',
 		confirmPassword: '',
+		stateOfResidence: '',
+		location: '',
 	});
 
 	const onChange = event => {
@@ -20,7 +23,7 @@ function RegistrationForm() {
 	return (
 		<Segment>
 			<Form size='large' style={{ backgroundColor: 'white' }} onSubmit={onSubmit}>
-				<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Change the Narative</h2>
+				<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Request for a Tutor</h2>
 				<Form.Group widths='equal'>
 					<Form.Input
 						fluid
@@ -114,11 +117,9 @@ function RegistrationForm() {
 					<Form.Checkbox label='By registering, you agree to our terms and policies' />
 				</Form.Group>
 				<Button color='blue' fluid size='large'>
-					Join Now
+					Get a Tutor
 				</Button>
 			</Form>
 		</Segment>
 	);
 }
-
-export default RegistrationForm;

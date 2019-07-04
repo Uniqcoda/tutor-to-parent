@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar() {
 	return (
-		<div className='ui large inverted pointing secondary menu'>
+		<div className='ui stackable inverted pointing secondary menu'>
 			<div className='ui container'>
 				<Link to='/' className='item'>
 					Upthrust Tutors

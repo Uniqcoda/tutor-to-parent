@@ -20,20 +20,9 @@ export default function Login() {
 					<header>
 						<NavBar />
 					</header>
-
-					<div className='ui two column stackable grid'>
-						<div className='column'>
-							<h1
-								className='ui inverted header'
-								style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: '0px', marginTop: '3em' }}
-							>
-								{/* This is the registration page */}
-							</h1>
-						</div>
-						<div className='column'>
+						<div className='ui one column stackable center aligned page grid' style={{marginTop: '10px'}}>
 							<LoginForm />
 						</div>
-					</div>
 				</div>
 			</div>
 		</div>

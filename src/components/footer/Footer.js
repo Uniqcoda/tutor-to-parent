@@ -25,10 +25,10 @@ export default function Footer() {
 						</div>
 						<div className='three wide column'>
 							<div role='list' className='ui inverted link list'>
-								<Link role='listitem' className='item'>
+								<Link to='/become-a-tutor' role='listitem' className='item'>
                 Become a Tutor
 								</Link>
-								<Link role='listitem' className='item'>
+								<Link to='/get-a-tutor' role='listitem' className='item'>
                 Get a Tutor
 								</Link>
 								<Link role='listitem' className='item'>
