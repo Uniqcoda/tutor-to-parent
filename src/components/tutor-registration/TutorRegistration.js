@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Form, Icon } from 'semantic-ui-react';
 import NavBar from '../navbar/NavBar';
-import RegistrationForm from './RegistrationForm';
+import RegistrationForm from '../registration-form/RegistrationForm';
+import { Segment } from 'semantic-ui-react';
 
 export default function TutorRegistration() {
 	return (
@@ -23,9 +22,12 @@ export default function TutorRegistration() {
 						<header>
 							<NavBar />
 						</header>
-            <div className='ui one column stackable center aligned page grid' style={{marginTop: '10px'}}>
+						<div className='ui one column center aligned page grid' style={{ marginTop: '10px' }}>
+							<Segment>
+								<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Transform a Child</h2>
 								<RegistrationForm />
-							</div>
+							</Segment>
+						</div>
 					</div>
 				</div>
 			</div>

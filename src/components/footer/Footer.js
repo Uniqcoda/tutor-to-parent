@@ -9,16 +9,16 @@ export default function Footer() {
 					<div className='row'>
 						<div className='three wide column'>
 							<div role='list' className='ui inverted link list'>
-								<Link role='listitem' className='item'>
+								<Link to='' role='listitem' className='item'>
 									Contact Us
 								</Link>
-								<Link role='listitem' className='item'>
+								<Link to='' role='listitem' className='item'>
 									About
 								</Link>
-								<Link role='listitem' className='item'>
+								<Link to='' role='listitem' className='item'>
                 Frequently Asked Questions
 								</Link>
-                <Link role='listitem' className='item'>
+                <Link to='' role='listitem' className='item'>
 									Privacy Policy
 								</Link>
 							</div>
@@ -31,10 +31,10 @@ export default function Footer() {
 								<Link to='/get-a-tutor' role='listitem' className='item'>
                 Get a Tutor
 								</Link>
-								<Link role='listitem' className='item'>
+								<Link to='' role='listitem' className='item'>
 									Become a scout partner
 								</Link>
-								<Link role='listitem' className='item'>
+								<Link to='' role='listitem' className='item'>
 									Privacy Policy
 								</Link>
 							</div>

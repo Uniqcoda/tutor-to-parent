@@ -1,14 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form, Message, Segment } from 'semantic-ui-react';
 
 export default function LoginForm() {
+	const [values, setValues] = useState({
+		email: '',
+		password: '',
+	});
+
+	const onChange = event => {
+		setValues({ ...values, [event.target.name]: event.target.value });
+	};
+	const onSubmit = event => {
+		event.preventDefault();
+		alert(`Login with ${values.email}`);
+	};
+
 	return (
 		<div>
 			<Segment>
-				<Form size='large'>
-					<Form.Input fluid icon='user' label='Email' id='email' placeholder='Email address' />
-					<Form.Input fluid icon='lock' label='Password' id='password' placeholder='Password' type='password' />
+				<Form size='large' onSubmit={onSubmit}>
+					<Form.Input
+						fluid
+						icon='mail'
+						label='Email'
+						id='email'
+						placeholder='Email address'
+						name='email'
+						value={values.email}
+						onChange={onChange}
+					/>
+					<Form.Input
+						fluid
+						icon='lock'
+						label='Password'
+						id='password'
+						placeholder='Password'
+						type='password'
+						name='password'
+						value={values.password}
+						onChange={onChange}
+					/>
 
 					<Button color='blue' fluid size='large'>
 						Login

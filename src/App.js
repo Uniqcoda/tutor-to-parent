@@ -5,6 +5,7 @@ import Footer from './components/footer/Footer';
 import TutorRegistration from './components/tutor-registration/TutorRegistration';
 import ParentRegistration from './components/parent-registration/ParentRegistration';
 import Login from './components/login/Login';
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 			<Route path='/become-a-tutor' component={TutorRegistration} />
 			<Route path='/get-a-tutor' component={ParentRegistration} />
 			<Route path='/login' component={Login} />
+			<Route path='/user-dashboard' component={Dashboard} />
 			<Footer />
 		</>
 	);
