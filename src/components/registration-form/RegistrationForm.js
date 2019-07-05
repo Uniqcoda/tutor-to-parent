@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Form, Button } from 'semantic-ui-react';
 
 function RegistrationForm({ userRole }) {
@@ -37,10 +38,6 @@ function RegistrationForm({ userRole }) {
 		setValues({ ...values, [name]: value });
 	};
 
-	// useEffect(() => {
-	// 	console.log(values);
-	// });
-
 	const onSubmit = event => {
 		if (!values.firstName && !values.lastName) {
 			alert('Please enter your first name and last name');
@@ -62,6 +59,11 @@ function RegistrationForm({ userRole }) {
 			event.preventDefault();
 			return;
 		}
+		if (values.password !== values.confirmPassword) {
+			alert('Password does not match');
+			event.preventDefault();
+			return;
+		}
 		if (!values.stateOfRes) {
 			alert('Please select your state of residence');
 			event.preventDefault();
@@ -77,10 +79,13 @@ function RegistrationForm({ userRole }) {
 			event.preventDefault();
 			return;
 		}
-		event.preventDefault();
-		console.log(values);
+		// event.preventDefault();
+		// console.log(values);
 
-		
+		axios.post('http://localhost:3000/users', values).then(() => {
+			event.preventDefault();
+			alert('Submitted successfully');
+		});
 	};
 
 	return (
