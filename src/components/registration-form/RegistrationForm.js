@@ -1,37 +1,90 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 
-function RegistrationForm() {
+function RegistrationForm({ userRole }) {
+	const selectState = [
+		{ key: 'l', text: 'Lagos', value: 'Lagos' },
+		{ key: 'e', text: 'Enugu', value: 'Enugu' },
+		{ key: 'a', text: 'Abuja', value: 'Abuja' },
+	];
+
+	const selectLocation = [
+		{ key: 'l', text: 'Lekki', value: 'Lekki' },
+		{ key: 'i', text: 'Ikeja', value: 'Ikeja' },
+		{ key: 'a', text: 'Apapa', value: 'Apapa' },
+	];
+
+	const selectGender = [
+		{ key: 'm', text: 'Male', value: 'Male' },
+		{ key: 'f', text: 'Female', value: 'Female' },
+		{ key: 'o', text: 'Others', value: 'Others' },
+	];
+
 	const [values, setValues] = useState({
 		firstName: '',
 		lastName: '',
 		email: '',
 		phone: '',
 		gender: '',
-		stateOfResidence: '',
+		stateOfRes: '',
 		location: '',
 		password: '',
 		confirmPassword: '',
+		userRole: userRole,
 	});
 
-	const onChange = event => {
-		setValues({ ...values, [event.target.name]: event.target.value });
+	const onChange = (event, { name, value }) => {
+		setValues({ ...values, [name]: value });
 	};
+
+	// useEffect(() => {
+	// 	console.log(values);
+	// });
+
 	const onSubmit = event => {
+		if (!values.firstName && !values.lastName) {
+			alert('Please enter your first name and last name');
+			event.preventDefault();
+			return;
+		}
+		if (!values.email) {
+			alert('Please enter your email');
+			event.preventDefault();
+			return;
+		}
+		if (!values.phone) {
+			alert('Please enter your phone number');
+			event.preventDefault();
+			return;
+		}
+		if (!values.password) {
+			alert('Please enter your password');
+			event.preventDefault();
+			return;
+		}
+		if (!values.stateOfRes) {
+			alert('Please select your state of residence');
+			event.preventDefault();
+			return;
+		}
+		if (!values.location) {
+			alert('Please select your location');
+			event.preventDefault();
+			return;
+		}
+		if (!values.gender) {
+			alert('Please select your gender');
+			event.preventDefault();
+			return;
+		}
 		event.preventDefault();
-		alert(`Your sign-up details are:
-		First Name: ${values.firstName};
-		Last Name: ${values.lastName};
-		Email: ${values.email};
-		Phone: ${values.phone};
-		Gender: ${values.gender};
-		State of Residence: ${values.stateOfResidence};
-		Location: ${values.location};
-		`);
+		console.log(values);
+
+		
 	};
 
 	return (
-		<Form size='large' style={{ backgroundColor: 'white' }} onSubmit={onSubmit}>
+		<form className='ui form' size='large' style={{ backgroundColor: 'white' }} onSubmit={onSubmit}>
 			<Form.Group widths='equal'>
 				<Form.Input
 					fluid
@@ -102,32 +155,38 @@ function RegistrationForm() {
 				/>
 			</Form.Group>
 			<Form.Group widths='equal'>
-				<Form.Select label='State of Residence' id='stateOfResidence' control='select'>
-					<option value=''>Select State</option>
-					<option value='lagos'>Lagos</option>
-					<option value='abuja'>Abuja</option>
-					<option value='rivers'>Rivers</option>
-				</Form.Select>
-				<Form.Select label='Location' id='location' control='select'>
-					<option value=''>Select Location</option>
-					<option value='ikeja'>Ikeja</option>
-					<option value='victoria-island'>Victoria Island</option>
-					<option value='ajah'>Ajah</option>
-				</Form.Select>
+				<Form.Select
+					label='State of Residence'
+					name='stateOfRes'
+					options={selectState}
+					placeholder='state'
+					// value={values.stateOfRes}
+					onChange={onChange}
+				/>
+				<Form.Select
+					label='Location'
+					name='location'
+					options={selectLocation}
+					placeholder='location'
+					// value={values.location}
+					onChange={onChange}
+				/>
 			</Form.Group>
 			<Form.Group widths='equal'>
-				<Form.Select label='Gender' id='gender' control='select'>
-					<option value=''>Select Gender</option>
-					<option value='male'>Male</option>
-					<option value='female'>Female</option>
-					<option value='other'>Other</option>
-				</Form.Select>
-				<Form.Checkbox label='By registering, you agree to our terms and policies' />
+				<Form.Select
+					label='Gender'
+					name='gender'
+					options={selectGender}
+					placeholder='gender'
+					// value={values.gender}
+					onChange={onChange}
+				/>
+				<Form.Checkbox label='By registering, you agree to our terms and policies' onChange={onChange} />
 			</Form.Group>
 			<Button color='blue' fluid size='large'>
 				Submit
 			</Button>
-		</Form>
+		</form>
 	);
 }
 

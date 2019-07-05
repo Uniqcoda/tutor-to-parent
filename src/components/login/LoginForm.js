@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Button, Form, Message, Segment } from 'semantic-ui-react';
 
-export default function LoginForm() {
+ function LoginForm(props) {
 	const [values, setValues] = useState({
 		email: '',
 		password: '',
@@ -14,6 +14,7 @@ export default function LoginForm() {
 	const onSubmit = event => {
 		event.preventDefault();
 		alert(`Login with ${values.email}`);
+		props.history.push('/user-dashboard')
 	};
 
 	return (
@@ -54,3 +55,5 @@ export default function LoginForm() {
 		</div>
 	);
 }
+
+export default withRouter(LoginForm);

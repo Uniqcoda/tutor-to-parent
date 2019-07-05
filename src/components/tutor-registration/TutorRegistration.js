@@ -24,8 +24,8 @@ export default function TutorRegistration() {
 						</header>
 						<div className='ui one column center aligned page grid' style={{ marginTop: '10px' }}>
 							<Segment>
-								<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Transform a Child</h2>
-								<RegistrationForm />
+								<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Become a Tutor</h2>
+								<RegistrationForm userRole='tutor' />
 							</Segment>
 						</div>
 					</div>

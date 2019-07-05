@@ -24,7 +24,7 @@ export default function ParentRegistration() {
 						<div className='ui one column left aligned page grid' style={{ marginTop: '10px' }}>
 							<Segment>
 								<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Request for a Tutor</h2>
-								<RegistrationForm />
+								<RegistrationForm userRole='parents' />
 							</Segment>
 						</div>
 					</div>

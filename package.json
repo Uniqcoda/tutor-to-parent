@@ -6,6 +6,8 @@
 		"@types/node": "^10.14.10",
 		"@types/react": "^16.8.22",
 		"@types/react-dom": "^16.8.4",
+		"axios": "^0.19.0",
+		"json-server": "^0.15.0",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"react-router-dom": "^5.0.1",
@@ -38,5 +40,17 @@
 	"devDependencies": {
 		"@testing-library/react": "^8.0.4",
 		"@types/jest": "^24.0.15"
-	}
+	},
+	"description": "## An online platform that matches Professional Private tutors to Parents for their kids.",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Uniqcoda/tutor-to-parent.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Uniqcoda/tutor-to-parent/issues"
+	},
+	"homepage": "https://github.com/Uniqcoda/tutor-to-parent#readme"
 }
