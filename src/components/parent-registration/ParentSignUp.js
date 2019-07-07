@@ -1,11 +1,11 @@
 import React from 'react';
 import NavBar from '../navbar/NavBar';
 import { Link } from 'react-router-dom';
-import RegistrationForm from '../registration-form/RegistrationForm';
+import SignUpForm from '../sign-up-form/SignUpForm';
 import { Segment, Message } from 'semantic-ui-react';
-import Aside from '../registration-form/Aside';
+import Aside from '../sign-up-form/Aside';
 
-export default function ParentRegistration() {
+export default function ParentSignUp() {
 	return (
 		<>
 			<div>
@@ -31,7 +31,7 @@ export default function ParentRegistration() {
 							<section className='8 wide column'>
 								<Segment>
 									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Request for a Tutor</h2>
-									<RegistrationForm userRole='parents' />
+									<SignUpForm userRole='parents' />
 									<Message style={{ textAlign: 'center' }}>
 										Already registered? <Link to='/login'>Login</Link>
 									</Message>

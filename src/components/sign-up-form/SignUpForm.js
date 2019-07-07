@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Button } from 'semantic-ui-react';
 
 
-function RegistrationForm({ userRole, history }) {
+function SignUpForm({ userRole, history }) {
 	const selectState = [
 		{ key: 'l', text: 'Lagos', value: 'Lagos' },
 		{ key: 'e', text: 'Enugu', value: 'Enugu' },
@@ -195,4 +195,4 @@ function RegistrationForm({ userRole, history }) {
 	);
 }
 
-export default RegistrationForm;
+export default SignUpForm;
