@@ -14,13 +14,11 @@ function LoginForm(props) {
 	};
 	const onSubmit = event => {
 		event.preventDefault();
-		// alert(`Login with ${values.email}`);
 		Axios.get(`http://localhost:3000/users?email=${values.email}`)
 			.then(data => data.data)
 			.then(user => {
 
 				if (user[0].password === values.password) {
-					// console.log(user[0]);
 					alert(`Welcome ${user[0].firstName}`);
 					props.history.push(`/user-dashboard/${user[0].email}`);
 				} else {

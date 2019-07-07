@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Button, Header, Image, Menu } from 'semantic-ui-react';
+import { Grid, Button, Segment, Header, Image, Menu } from 'semantic-ui-react';
 import NavBar from '../navbar/NavBar';
 import getInfoFromURL from './getInfoFromURL';
 import Axios from 'axios';
@@ -12,13 +12,12 @@ const TutorDashborad = () => {
 	const showSchedule = event => {};
 	const showContacts = event => {};
 	const userEmail = getInfoFromURL();
-	console.log(userEmail);
 
 	useEffect(() => {
 		Axios.get(`http://localhost:3000/users?email=${userEmail}`)
 			.then(data => data.data)
 			.then(data => {
-				const user = data[0]
+				const user = data[0];
 				const requiredDetails = {
 					firstName: user.firstName,
 					lastName: user.lastName,
@@ -30,8 +29,8 @@ const TutorDashborad = () => {
 				};
 				setUserProfile(requiredDetails);
 			});
-		},[]);
-		console.log(userProfile);
+	}, []);
+	console.log(userProfile);
 
 	return (
 		<>
@@ -55,13 +54,7 @@ const TutorDashborad = () => {
 			<Grid>
 				<Grid.Row>
 					<Grid.Column width={2}>
-						<Menu
-							icon='labeled'
-							inverted
-							pointing
-							vertical
-							style={{ overflowY: 'scroll', height: '50rem' }}
-						>
+						<Menu icon='labeled' inverted pointing vertical style={{ height: '50rem' }}>
 							<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
 							<Link to='' onClick={showProfileDetails} className='item'>
 								My Profile
@@ -84,33 +77,72 @@ const TutorDashborad = () => {
 							<Link to='' className='item'>
 								Others
 							</Link>
-							<Link to='/' className='ui button' role='button'>
+							<Link to='/' className='item'>
 								Log out
 							</Link>
-							<Link to='/' className='ui button' role='button'>
-								Sign out
+							<Link to='/' className='item'>
+								Delete account
 							</Link>
 						</Menu>
 					</Grid.Column>
 					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem' }}>
-						<Grid className="ui two column stackable grid" celled>
-							<Grid.Row>
-								<Grid.Column className='ui center aligned' width={6}>
-									<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
-									<Header as='h3'>{userProfile.firstName} {userProfile.lastName}</Header>
+						<Grid className='ui two column stackable grid'>
+							<Grid.Row >
+								<Grid.Column className='ui aligned' width={8}>
+									<Segment>
+										<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
+										<Header as='h2' className='ui center aligned'>
+											{userProfile.firstName} {userProfile.lastName}
+										</Header>
+										<Grid className='ui two column stackable grid'>
+											<Grid.Row>
+												<Grid.Column>
+													<p>Email: {userProfile.email}</p>
+												</Grid.Column>
+												<Grid.Column>
+													<p>Phone: {userProfile.phone}</p>
+												</Grid.Column>
+											</Grid.Row>
+											<Grid.Row>
+												<Grid.Column>
+													<p>Gender: {userProfile.gender}</p>
+												</Grid.Column>
+												<Grid.Column>
+													<p>
+														Location: {userProfile.location}, {userProfile.stateOfRes}
+													</p>
+												</Grid.Column>
+											</Grid.Row>
+										</Grid>
+									</Segment>
 								</Grid.Column>
-								<Grid.Column width={6}>
-									<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+								<Grid.Column width={8}>
+									<Segment>
+										<Header as='h3' className='ui center aligned'>
+											CERTIFICATION
+										</Header>
+										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+									</Segment>
 								</Grid.Column>
 							</Grid.Row>
 						</Grid>
-						<Grid className="ui two column stackable grid" celled>
+						<Grid className='ui two column stackable grid'>
 							<Grid.Row>
-								<Grid.Column width={6}>
-									<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+								<Grid.Column width={8}>
+									<Segment>
+										<Header as='h3' className='ui center aligned'>
+											UPCOMING LESSONS
+										</Header>
+										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+									</Segment>
 								</Grid.Column>
-								<Grid.Column width={6}>
-									<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+								<Grid.Column width={8}>
+									<Segment>
+										<Header as='h3' className='ui center aligned'>
+											UPCOMING LESSONS
+										</Header>
+										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+									</Segment>
 								</Grid.Column>
 							</Grid.Row>
 						</Grid>
