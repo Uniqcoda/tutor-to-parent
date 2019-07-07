@@ -54,7 +54,7 @@ const TutorDashborad = () => {
 			<Grid>
 				<Grid.Row>
 					<Grid.Column width={2}>
-						<Menu icon='labeled' inverted pointing vertical style={{ height: '50rem' }}>
+						<Menu icon='labeled' inverted pointing vertical style={{ height: '50rem', borderRadius: '0%' }}>
 							<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
 							<Link to='' onClick={showProfileDetails} className='item'>
 								My Profile
@@ -87,7 +87,7 @@ const TutorDashborad = () => {
 					</Grid.Column>
 					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem' }}>
 						<Grid className='ui two column stackable grid'>
-							<Grid.Row >
+							<Grid.Row>
 								<Grid.Column className='ui aligned' width={8}>
 									<Segment>
 										<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
@@ -97,19 +97,21 @@ const TutorDashborad = () => {
 										<Grid className='ui two column stackable grid'>
 											<Grid.Row>
 												<Grid.Column>
-													<p>Email: {userProfile.email}</p>
+													<p>
+														<i className='icon mail' /> {userProfile.email}
+													</p>
 												</Grid.Column>
 												<Grid.Column>
-													<p>Phone: {userProfile.phone}</p>
+													<p><i className='icon phone' /> {userProfile.phone}</p>
 												</Grid.Column>
 											</Grid.Row>
 											<Grid.Row>
 												<Grid.Column>
-													<p>Gender: {userProfile.gender}</p>
+													<p><i className='icon user' /> {userProfile.gender}</p>
 												</Grid.Column>
 												<Grid.Column>
 													<p>
-														Location: {userProfile.location}, {userProfile.stateOfRes}
+													<i className='icon map marker alternate' /> {userProfile.location}, {userProfile.stateOfRes}
 													</p>
 												</Grid.Column>
 											</Grid.Row>

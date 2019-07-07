@@ -39,7 +39,7 @@ export default function HomePage() {
 							<Form>
 								<Form.Group>
 									<input placeholder='What do you want to learn?' />
-									<Button type='submit' primary>
+									<Button type='submit' style={{marginLeft: '2px'}} primary>
 										<Icon name='search' />
 									</Button>
 								</Form.Group>

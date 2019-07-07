@@ -25,10 +25,10 @@ export default function ParentRegistration() {
 							<NavBar className='ui stackable inverted pointing secondary menu' />
 						</header>
 						<div className='ui two column stackable grid' style={{ marginTop: '10px' }}>
-							<section class='8 wide column'>
-								<Aside />
+							<section className='8 wide column'>
+								<Aside/>
 							</section>
-							<section class='8 wide column'>
+							<section className='8 wide column'>
 								<Segment>
 									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Request for a Tutor</h2>
 									<RegistrationForm userRole='parents' />
