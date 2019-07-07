@@ -22,7 +22,7 @@ function LoginForm(props) {
 				if (user[0].password === values.password) {
 					// console.log(user[0]);
 					alert(`Welcome ${user[0].firstName}`);
-					props.history.push('/user-dashboard');
+					props.history.push(`/user-dashboard/${user[0].email}`);
 				} else {
 					alert('email or password incorrect');
 				}

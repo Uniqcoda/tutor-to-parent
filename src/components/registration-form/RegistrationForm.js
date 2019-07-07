@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Button } from 'semantic-ui-react';
 
 
-function RegistrationForm({ userRole }) {
+function RegistrationForm({ userRole, history }) {
 	const selectState = [
 		{ key: 'l', text: 'Lagos', value: 'Lagos' },
 		{ key: 'e', text: 'Enugu', value: 'Enugu' },
@@ -84,6 +84,7 @@ function RegistrationForm({ userRole }) {
 		axios.post('http://localhost:3000/users', values).then(() => {
 			event.preventDefault();
 			alert('Submitted successfully');
+			history.push('/login');
 		});
 	};
 
