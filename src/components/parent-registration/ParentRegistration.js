@@ -1,7 +1,8 @@
 import React from 'react';
 import NavBar from '../navbar/NavBar';
+import { Link } from 'react-router-dom';
 import RegistrationForm from '../registration-form/RegistrationForm';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Message } from 'semantic-ui-react';
 export default function ParentRegistration() {
 	return (
 		<>
@@ -19,12 +20,15 @@ export default function ParentRegistration() {
 				>
 					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '700px' }}>
 						<header>
-							<NavBar />
+							<NavBar className='ui stackable inverted pointing secondary menu'/>
 						</header>
 						<div className='ui one column left aligned page grid' style={{ marginTop: '10px' }}>
 							<Segment>
 								<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Request for a Tutor</h2>
 								<RegistrationForm userRole='parents' />
+								<Message style={{ textAlign: 'center' }}>
+									Already registered? <Link to='/login'>Login</Link>
+								</Message>
 							</Segment>
 						</div>
 					</div>

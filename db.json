@@ -1,112 +1,134 @@
 {
-  "users": [
-    {
-      "firstName": "Mary",
-      "lastName": "Etokwudo",
-      "email": "etokwudomary@gmail.com",
-      "phone": "+2348067579306",
-      "gender": "Male",
-      "stateOfRes": "Lagos",
-      "location": "Ikeja",
-      "password": "gfg",
-      "confirmPassword": "fds",
-      "userRole": "tutor",
-      "id": 1
-    },
-    {
-      "firstName": "Jon",
-      "lastName": "Snow",
-      "email": "jonsnow@snow.com",
-      "phone": "+2348056435678",
-      "gender": "Others",
-      "stateOfRes": "Abuja",
-      "location": "Apapa",
-      "password": "wefwesds",
-      "confirmPassword": "dsdfsdsd",
-      "userRole": "parents",
-      "id": 2
-    },
-    {
-      "firstName": "Izuchukwu",
-      "lastName": "Ogbodo",
-      "email": "matthiasogbodo@gmail.com",
-      "phone": "+2347032150416",
-      "gender": "Female",
-      "stateOfRes": "Enugu",
-      "location": "Ikeja",
-      "password": "solomon1",
-      "confirmPassword": "solomon1",
-      "userRole": "tutor",
-      "id": 3
-    },
-    {
-      "firstName": "Esther",
-      "lastName": "Ogundijo",
-      "email": "estherseyi@gmail.com",
-      "phone": "+2348067345908",
-      "gender": "Female",
-      "stateOfRes": "Lagos",
-      "location": "Apapa",
-      "password": "esty34",
-      "confirmPassword": "esty34",
-      "userRole": "parents",
-      "id": 4
-    },
-    {
-      "firstName": "Amakiri",
-      "lastName": "Joseph",
-      "email": "amakirij@gmail.com",
-      "phone": "+2345485955677",
-      "gender": "Female",
-      "stateOfRes": "Enugu",
-      "location": "Lekki",
-      "password": "dfg",
-      "confirmPassword": "dfg",
-      "userRole": "parents",
-      "id": 5
-    },
-    {
-      "firstName": "Chioma",
-      "lastName": "Etukwudo",
-      "email": "chiomaetukwudo@yahoo.com",
-      "phone": "09021234555",
-      "gender": "Female",
-      "stateOfRes": "Enugu",
-      "location": "Apapa",
-      "password": "chibaby",
-      "confirmPassword": "chibaby",
-      "userRole": "tutor",
-      "id": 6
-    },
-    {
-      "firstName": "Chi",
-      "lastName": "Chi",
-      "email": "chichi@gmail.co",
-      "phone": "090232445959",
-      "gender": "Female",
-      "stateOfRes": "Lagos",
-      "location": "Lekki",
-      "password": "s",
-      "confirmPassword": "s",
-      "userRole": "tutor",
-      "id": 7
-    }
-  ],
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+	"users": [
+		{
+			"firstName": "Mary",
+			"lastName": "Etokwudo",
+			"email": "etokwudomary@gmail.com",
+			"phone": "+2348067579306",
+			"gender": "Male",
+			"stateOfRes": "Lagos",
+			"location": "Ikeja",
+			"password": "gfg",
+			"confirmPassword": "fds",
+			"userRole": "tutor",
+			"id": 1
+		},
+		{
+			"firstName": "Jon",
+			"lastName": "Snow",
+			"email": "jonsnow@snow.com",
+			"phone": "+2348056435678",
+			"gender": "Others",
+			"stateOfRes": "Abuja",
+			"location": "Apapa",
+			"password": "jsnow1",
+			"confirmPassword": "dsdfsdsd",
+			"userRole": "parents",
+			"id": 2
+		},
+		{
+			"firstName": "Izuchukwu",
+			"lastName": "Ogbodo",
+			"email": "matthiasogbodo@gmail.com",
+			"phone": "+2347032150416",
+			"gender": "Female",
+			"stateOfRes": "Enugu",
+			"location": "Ikeja",
+			"password": "solomon1",
+			"confirmPassword": "solomon1",
+			"userRole": "tutor",
+			"id": 3
+		},
+		{
+			"firstName": "Esther",
+			"lastName": "Ogundijo",
+			"email": "estherseyi@gmail.com",
+			"phone": "+2348067345908",
+			"gender": "Female",
+			"stateOfRes": "Lagos",
+			"location": "Apapa",
+			"password": "esty34",
+			"confirmPassword": "esty34",
+			"userRole": "parents",
+			"id": 4
+		},
+		{
+			"firstName": "Amakiri",
+			"lastName": "Joseph",
+			"email": "amakirij@gmail.com",
+			"phone": "+2345485955677",
+			"gender": "Female",
+			"stateOfRes": "Enugu",
+			"location": "Lekki",
+			"password": "dfg",
+			"confirmPassword": "dfg",
+			"userRole": "parents",
+			"id": 5
+		},
+		{
+			"firstName": "Chioma",
+			"lastName": "Etukwudo",
+			"email": "chiomaetukwudo@yahoo.com",
+			"phone": "09021234555",
+			"gender": "Female",
+			"stateOfRes": "Enugu",
+			"location": "Apapa",
+			"password": "chibaby",
+			"confirmPassword": "chibaby",
+			"userRole": "tutor",
+			"id": 6
+		},
+		{
+			"firstName": "Chi",
+			"lastName": "Chi",
+			"email": "chichi@gmail.co",
+			"phone": "090232445959",
+			"gender": "Female",
+			"stateOfRes": "Lagos",
+			"location": "Lekki",
+			"password": "s",
+			"confirmPassword": "s",
+			"userRole": "tutor",
+			"id": 7
+		},
+		{
+			"firstName": "Mary",
+			"lastName": "Etokwudo",
+			"email": "etokwudomary@gmail.com",
+			"phone": "+2348067579306",
+			"gender": "Male",
+			"stateOfRes": "Lagos",
+			"location": "Lekki",
+			"password": "12345",
+			"confirmPassword": "12345",
+			"userRole": "tutor",
+			"id": 8
+		},
+		{
+			"full_name": "Jon Snow",
+			"user_location": "Bauchi",
+			"username": "jsnow",
+			"password": "jsnow1",
+			"email": "jonsnow@snow.com",
+			"phone": "08054358766",
+			"id": 9
+		}
+	],
+	"posts": [
+		{
+			"id": 1,
+			"title": "json-server",
+			"author": "typicode"
+		}
+	],
+	"comments": [
+		{
+			"id": 1,
+			"body": "some comment",
+			"postId": 1
+		}
+	],
+	"profile": {
+		"name": "typicode"
+	}
 }

@@ -18,7 +18,7 @@ export default function Login() {
 			>
 				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '700px' }}>
 					<header>
-						<NavBar />
+						<NavBar className='ui stackable inverted pointing secondary menu'/>
 					</header>
 						<div className='ui one column stackable center aligned page grid' style={{marginTop: '10px'}}>
 							<LoginForm />

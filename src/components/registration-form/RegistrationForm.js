@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'semantic-ui-react';
 
+
 function RegistrationForm({ userRole }) {
 	const selectState = [
 		{ key: 'l', text: 'Lagos', value: 'Lagos' },
@@ -79,8 +80,6 @@ function RegistrationForm({ userRole }) {
 			event.preventDefault();
 			return;
 		}
-		// event.preventDefault();
-		// console.log(values);
 
 		axios.post('http://localhost:3000/users', values).then(() => {
 			event.preventDefault();

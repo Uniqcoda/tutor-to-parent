@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Form, Message, Segment } from 'semantic-ui-react';
+import Axios from 'axios';
 
- function LoginForm(props) {
+function LoginForm(props) {
 	const [values, setValues] = useState({
 		email: '',
 		password: '',
@@ -13,8 +14,20 @@ import { Button, Form, Message, Segment } from 'semantic-ui-react';
 	};
 	const onSubmit = event => {
 		event.preventDefault();
-		alert(`Login with ${values.email}`);
-		props.history.push('/user-dashboard')
+		// alert(`Login with ${values.email}`);
+		Axios.get(`http://localhost:3000/users?email=${values.email}`)
+			.then(data => data.data)
+			.then(user => {
+
+				if (user[0].password === values.password) {
+					// console.log(user[0]);
+					alert(`Welcome ${user[0].firstName}`);
+					props.history.push('/user-dashboard');
+				} else {
+					alert('email or password incorrect');
+				}
+			})
+			.catch(err => alert('email is incorrect'));
 	};
 
 	return (

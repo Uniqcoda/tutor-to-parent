@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavBar({className, style}) {
 	return (
-		<div className='ui stackable inverted pointing secondary menu'>
+		<div className={className} style={style}>
 			<div className='ui container'>
 				<Link to='/' className='item'>
 					Upthrust Tutors
