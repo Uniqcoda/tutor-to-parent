@@ -18,7 +18,7 @@ export default function HomePage() {
 						padding: '0px',
 					}}
 				>
-					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '700px' }}>
+					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', width: '100%', minHeight: '700px' }}>
 						<header>
 							<NavBar className='ui stackable inverted pointing secondary menu'/>
 						</header>
