@@ -20,7 +20,12 @@ function LoginForm(props) {
 
 				if (user[0].password === values.password) {
 					alert(`Welcome ${user[0].firstName}`);
-					props.history.push(`/user-dashboard/${user[0].email}`);
+					if (user[0].userRole === 'tutor') {
+						props.history.push(`/tutor-dashboard/${user[0].email}`);
+					}
+					if (user[0].userRole === 'parent') {
+						props.history.push(`/parent-dashboard/${user[0].email}`);
+					}
 				} else {
 					alert('email or password incorrect');
 				}

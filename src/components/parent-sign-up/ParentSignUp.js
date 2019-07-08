@@ -31,7 +31,7 @@ export default function ParentSignUp() {
 							<section className='8 wide column'>
 								<Segment>
 									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Request for a Tutor</h2>
-									<SignUpForm userRole='parents' />
+									<SignUpForm userRole='parent' />
 									<Message style={{ textAlign: 'center' }}>
 										Already registered? <Link to='/login'>Login</Link>
 									</Message>

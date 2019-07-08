@@ -23,7 +23,7 @@
 			"location": "Apapa",
 			"password": "jsnow1",
 			"confirmPassword": "jsnow1",
-			"userRole": "parents",
+			"userRole": "parent",
 			"id": 2
 		},
 		{
@@ -49,7 +49,7 @@
 			"location": "Apapa",
 			"password": "eogundijo1",
 			"confirmPassword": "eogundijo1",
-			"userRole": "parents",
+			"userRole": "parent",
 			"id": 4
 		},
 		{
@@ -62,7 +62,7 @@
 			"location": "Lekki",
 			"password": "ajoseph",
 			"confirmPassword": "ajoseph",
-			"userRole": "parents",
+			"userRole": "parent",
 			"id": 5
 		},
 		{
