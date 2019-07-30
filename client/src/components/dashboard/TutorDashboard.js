@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Button, Segment, Header, Image, Menu } from 'semantic-ui-react';
+import { Grid, Segment, Header, Image, Menu } from 'semantic-ui-react';
 import NavBar from '../navbar/NavBar';
 import getInfoFromURL from './getInfoFromURL';
 import Axios from 'axios';
@@ -26,11 +26,11 @@ const TutorDashborad = () => {
 					gender: user.gender,
 					stateOfRes: user.stateOfRes,
 					location: user.location,
+					userRole: user.userRole,
 				};
 				setUserProfile(requiredDetails);
 			});
-	}, []);
-	console.log(userProfile);
+	}, [userEmail]);
 
 	return (
 		<>
@@ -92,7 +92,7 @@ const TutorDashborad = () => {
 									<Segment>
 										<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
 										<Header as='h2' className='ui center aligned'>
-											{userProfile.firstName} {userProfile.lastName}
+											{userProfile.firstName} {userProfile.lastName}, {userProfile.userRole}
 										</Header>
 										<Grid className='ui two column stackable grid'>
 											<Grid.Row>
@@ -102,16 +102,20 @@ const TutorDashborad = () => {
 													</p>
 												</Grid.Column>
 												<Grid.Column>
-													<p><i className='icon phone' /> {userProfile.phone}</p>
+													<p>
+														<i className='icon phone' /> {userProfile.phone}
+													</p>
 												</Grid.Column>
 											</Grid.Row>
 											<Grid.Row>
 												<Grid.Column>
-													<p><i className='icon user' /> {userProfile.gender}</p>
+													<p>
+														<i className='icon user' /> {userProfile.gender}
+													</p>
 												</Grid.Column>
 												<Grid.Column>
 													<p>
-													<i className='icon map marker alternate' /> {userProfile.location}, {userProfile.stateOfRes}
+														<i className='icon map marker alternate' /> {userProfile.location}, {userProfile.stateOfRes}
 													</p>
 												</Grid.Column>
 											</Grid.Row>

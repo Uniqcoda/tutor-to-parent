@@ -17,7 +17,6 @@ function LoginForm(props) {
 		Axios.get(`http://localhost:3000/users?email=${values.email}`)
 			.then(data => data.data)
 			.then(user => {
-
 				if (user[0].password === values.password) {
 					alert(`Welcome ${user[0].firstName}`);
 					if (user[0].userRole === 'tutor') {
@@ -32,7 +31,6 @@ function LoginForm(props) {
 			})
 			.catch(err => alert('email is incorrect'));
 	};
-
 	return (
 		<div>
 			<Segment>
