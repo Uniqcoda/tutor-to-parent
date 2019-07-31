@@ -1,24 +1,9 @@
 const { ApolloServer } = require('apollo-server');
-const gql = require('graphql-tag');
 const mongoose = require('mongoose');
 
-const typeDefs = require('./graphql/typeDefs')
-const parent = require('./models/Parent');
+const resolvers = require('./graphql/resolvers/index');
+const typeDefs = require('./graphql/typeDefs');
 const { MONGODB } = require('./config');
-
-const resolvers = {
-	Query: {
-		async getParents() {
-			try {
-				const parents = await parent.find();
-				return parents;
-			} catch (error) {
-				throw new Error(error);
-			}
-		},
-	},
-};
-
 
 const server = new ApolloServer({
 	typeDefs,
