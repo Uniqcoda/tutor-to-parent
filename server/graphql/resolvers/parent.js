@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server');
 
+const { validateParentSignUpInput, validateLoginInput } = require('../../util/validators');
 const { SECRET_KEY } = require('../../config');
 const Parent = require('../../models/Parent');
 
@@ -35,6 +36,20 @@ const resolvers = {
 			}
 		) {
 			//validate parent data
+			const { errors, valid } = validateParentSignUpInput(
+				firstName,
+				lastName,
+				email,
+				phone,
+				gender,
+				stateOfRes,
+				location,
+				password,
+				confirmPassword
+			);
+			if (!valid) {
+				throw new UserInputError(`Errors`, { errors });
+			}
 
 			// make sure parent doesn't already exist
 			const parent = await Parent.findOne({ email });
