@@ -6,6 +6,24 @@ const { validateParentSignUpInput, validateLoginInput } = require('../../util/va
 const { SECRET_KEY } = require('../../config');
 const Parent = require('../../models/Parent');
 
+function generateToken(parent) {
+	return jwt.sign(
+		{
+			id: parent.id,
+			firstName: parent.firstName,
+			lastName: parent.lastName,
+			email: parent.email,
+			phone: parent.phone,
+			gender: parent.gender,
+			stateOfRes: parent.stateOfRes,
+			location: parent.location,
+			userRole: parent.userRole,
+		},
+		SECRET_KEY,
+		{ expiresIn: '1h' }
+	);
+}
+
 const resolvers = {
 	Query: {
 		async getParents() {
@@ -18,6 +36,31 @@ const resolvers = {
 		},
 	},
 	Mutation: {
+		async login(_, { email, password }) {
+			const { errors, valid } = validateLoginInput(email, password);
+			if (!valid) {
+				throw new UserInputError('Errors', { errors });
+			}
+      const parent = await Parent.findOne({ email });
+      
+			if (!parent) {
+				errors.general = 'User not found';
+				throw new UserInputError('User not found', { errors });
+			}
+			const match = await bcrypt.compare(password, parent.password);
+			if (!match) {
+				errors.general = 'Wrong user details';
+				throw new UserInputError('Wrong user details', { errors });
+			}
+			const token = generateToken(parent);
+
+			return {
+				...parent._doc,
+				id: parent._id,
+				token,
+			};
+		},
+
 		async parentSignUp(
 			_,
 			{
@@ -76,21 +119,7 @@ const resolvers = {
 				createdAt: new Date().toISOString(),
 			});
 			const res = await newParent.save();
-			const token = jwt.sign(
-				{
-					id: res.id,
-					firstName: res.firstName,
-					lastName: res.lastName,
-					email: res.email,
-					phone: res.phone,
-					gender: res.gender,
-					stateOfRes: res.stateOfRes,
-					location: res.location,
-					userRole: res.userRole,
-				},
-				SECRET_KEY,
-				{ expiresIn: '1h' }
-			);
+			const token = generateToken(res);
 
 			return {
 				...res._doc,

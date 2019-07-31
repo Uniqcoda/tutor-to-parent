@@ -1,16 +1,21 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "apollo-server": "^2.8.0",
-    "graphql": "^14.4.2",
-    "mongoose": "^5.6.7"
-  }
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon index"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"apollo-server": "^2.8.0",
+		"bcryptjs": "^2.4.3",
+		"graphql": "^14.4.2",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.6.7"
+	},
+	"devDependencies": {
+		"nodemon": "^1.19.1"
+	}
 }

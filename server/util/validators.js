@@ -51,11 +51,6 @@ module.exports.validateLoginInput = (email, password) => {
 	const errors = {};
 	if (email.trim() === '') {
 		errors.email = 'Email address must not be empty';
-	} else {
-		const regExp = /^\w+[.-]?\w+@[a-z]+\.[a-z]{2,11}(\.[a-z]{2,11})?$/;
-		if (!email.match(regExp)) {
-			errors.email = 'Email address must be valid';
-		}
 	}
 	if (password === '') {
 		errors.password = 'Password must not be empty';

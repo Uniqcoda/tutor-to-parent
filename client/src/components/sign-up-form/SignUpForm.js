@@ -99,7 +99,7 @@ function SignUpForm({ userRole, history }) {
 					placeholder='First name'
 					name='firstName'
 					value={values.firstName}
-					onChange={onChange}
+					onChange={onChange} required 
 				/>
 				<Form.Input
 					fluid
@@ -109,7 +109,7 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Last name'
 					name='lastName'
 					value={values.lastName}
-					onChange={onChange}
+					onChange={onChange} required
 				/>
 			</Form.Group>
 			<Form.Group widths='equal'>
@@ -121,7 +121,7 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Email Address'
 					name='email'
 					value={values.email}
-					onChange={onChange}
+					onChange={onChange} required
 				/>
 				<Form.Input
 					fluid
@@ -131,7 +131,7 @@ function SignUpForm({ userRole, history }) {
 					placeholder='+234'
 					name='phone'
 					value={values.phone}
-					onChange={onChange}
+					onChange={onChange} required
 				/>
 			</Form.Group>
 
@@ -145,7 +145,7 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Password'
 					name='password'
 					value={values.password}
-					onChange={onChange}
+					onChange={onChange} required
 				/>
 				<Form.Input
 					fluid
@@ -156,7 +156,7 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Confirm Password'
 					name='confirmPassword'
 					value={values.confirmPassword}
-					onChange={onChange}
+					onChange={onChange} required
 				/>
 			</Form.Group>
 			<Form.Group widths='equal'>
@@ -166,7 +166,7 @@ function SignUpForm({ userRole, history }) {
 					options={selectState}
 					placeholder='state'
 					// value={values.stateOfRes}
-					onChange={onChange}
+					onChange={onChange} required
 				/>
 				<Form.Select
 					label='Location'
@@ -174,7 +174,7 @@ function SignUpForm({ userRole, history }) {
 					options={selectLocation}
 					placeholder='location'
 					// value={values.location}
-					onChange={onChange}
+					onChange={onChange} required
 				/>
 			</Form.Group>
 			<Form.Group widths='equal'>

@@ -31,6 +31,7 @@ const typeDefs = gql`
 	}
 	type Mutation {
 		parentSignUp(parentSignUpInput: ParentSignUpInput): Parent!
+		login(email: String!, password: String!): Parent!
 	}
 `;
 
