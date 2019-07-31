@@ -34,15 +34,29 @@ const resolvers = {
 				throw new Error(error);
 			}
 		},
+		async getParent(_, {parentId}) {
+			try {
+				const parent = await Parent.findById(parentId);
+        if (parent) {
+          return parent;
+        } else{
+          throw new Error('User not found');
+
+        }
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
 	},
+
 	Mutation: {
 		async login(_, { email, password }) {
 			const { errors, valid } = validateLoginInput(email, password);
 			if (!valid) {
 				throw new UserInputError('Errors', { errors });
 			}
-      const parent = await Parent.findOne({ email });
-      
+			const parent = await Parent.findOne({ email });
+
 			if (!parent) {
 				errors.general = 'User not found';
 				throw new UserInputError('User not found', { errors });

@@ -28,6 +28,7 @@ const typeDefs = gql`
 	}
 	type Query {
 		getParents: [Parent]
+		getParent(parentId: ID!): Parent
 	}
 	type Mutation {
 		parentSignUp(parentSignUpInput: ParentSignUpInput): Parent!
