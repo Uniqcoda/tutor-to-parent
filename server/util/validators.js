@@ -21,7 +21,7 @@ module.exports.validateParentSignUpInput = (
 	} else {
 		const regExp = /^\w+[.-]?\w+@[a-z]+\.[a-z]{2,11}(\.[a-z]{2,11})?$/;
 		if (!email.match(regExp)) {
-			errors.email = 'Email address must not be valid';
+			errors.email = 'Email address must be valid';
 		}
 	}
 	if (phone.trim() === '') {
@@ -37,9 +37,28 @@ module.exports.validateParentSignUpInput = (
 		errors.location = 'Location must not be empty';
 	}
 	if (password === '') {
-		errors.password = 'First name must not be empty';
+		errors.password = 'Password must not be empty';
 	} else if (confirmPassword !== password) {
 		errors.confirmPassword = 'Passwords must match';
+	}
+	return {
+		errors,
+		valid: Object.keys(errors).length < 1,
+	};
+};
+
+module.exports.validateLoginInput = (email, password) => {
+	const errors = {};
+	if (email.trim() === '') {
+		errors.email = 'Email address must not be empty';
+	} else {
+		const regExp = /^\w+[.-]?\w+@[a-z]+\.[a-z]{2,11}(\.[a-z]{2,11})?$/;
+		if (!email.match(regExp)) {
+			errors.email = 'Email address must be valid';
+		}
+	}
+	if (password === '') {
+		errors.password = 'Password must not be empty';
 	}
 	return {
 		errors,
