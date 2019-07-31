@@ -1,7 +1,7 @@
 const gql = require('graphql-tag');
 
 const typeDefs = gql`
-	type Parent {
+	type User {
 		id: ID!
 		firstName: String
 		lastName: String
@@ -14,7 +14,7 @@ const typeDefs = gql`
 		createdAt: String
 		token: String!
 	}
-	input ParentSignUpInput {
+	input SignUpInput {
 		firstName: String!
 		lastName: String!
 		email: String!
@@ -27,12 +27,13 @@ const typeDefs = gql`
 		userRole: String!
 	}
 	type Query {
-		getParents: [Parent]
-		getParent(parentId: ID!): Parent
+		getUsers: [User]
+		getUser(userId: ID!): User
 	}
 	type Mutation {
-		parentSignUp(parentSignUpInput: ParentSignUpInput): Parent!
-		login(email: String!, password: String!): Parent!
+		signUp(signUpInput: SignUpInput): User!
+		login(email: String!, password: String!): User!
+		deleteUser(userId: ID!): String!
 	}
 `;
 

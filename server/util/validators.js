@@ -1,4 +1,4 @@
-module.exports.validateParentSignUpInput = (
+module.exports.validateSignUpInput = (
 	firstName,
 	lastName,
 	email,

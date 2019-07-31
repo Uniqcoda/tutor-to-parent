@@ -2,22 +2,22 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server');
 
-const { validateParentSignUpInput, validateLoginInput } = require('../../util/validators');
+const { validateSignUpInput, validateLoginInput } = require('../../util/validators');
 const { SECRET_KEY } = require('../../config');
-const Parent = require('../../models/Parent');
+const User = require('../../models/User');
 
-function generateToken(parent) {
+function generateToken(user) {
 	return jwt.sign(
 		{
-			id: parent.id,
-			firstName: parent.firstName,
-			lastName: parent.lastName,
-			email: parent.email,
-			phone: parent.phone,
-			gender: parent.gender,
-			stateOfRes: parent.stateOfRes,
-			location: parent.location,
-			userRole: parent.userRole,
+			id: user.id,
+			firstName: user.firstName,
+			lastName: user.lastName,
+			email: user.email,
+			phone: user.phone,
+			gender: user.gender,
+			stateOfRes: user.stateOfRes,
+			location: user.location,
+			userRole: user.userRole,
 		},
 		SECRET_KEY,
 		{ expiresIn: '1h' }
@@ -26,19 +26,19 @@ function generateToken(parent) {
 
 const resolvers = {
 	Query: {
-		async getParents() {
+		async getUsers() {
 			try {
-				const parents = await Parent.find();
-				return parents;
+				const users = await User.find();
+				return users;
 			} catch (error) {
 				throw new Error(error);
 			}
 		},
-		async getParent(_, {parentId}) {
+		async getUser(_, {userId}) {
 			try {
-				const parent = await Parent.findById(parentId);
-        if (parent) {
-          return parent;
+				const user = await User.findById(userId);
+        if (user) {
+          return user;
         } else{
           throw new Error('User not found');
 
@@ -55,30 +55,30 @@ const resolvers = {
 			if (!valid) {
 				throw new UserInputError('Errors', { errors });
 			}
-			const parent = await Parent.findOne({ email });
+			const user = await User.findOne({ email });
 
-			if (!parent) {
+			if (!user) {
 				errors.general = 'User not found';
 				throw new UserInputError('User not found', { errors });
 			}
-			const match = await bcrypt.compare(password, parent.password);
+			const match = await bcrypt.compare(password, user.password);
 			if (!match) {
 				errors.general = 'Wrong user details';
 				throw new UserInputError('Wrong user details', { errors });
 			}
-			const token = generateToken(parent);
+			const token = generateToken(user);
 
 			return {
-				...parent._doc,
-				id: parent._id,
+				...user._doc,
+				id: user._id,
 				token,
 			};
 		},
 
-		async parentSignUp(
+		async signUp(
 			_,
 			{
-				parentSignUpInput: {
+				signUpInput: {
 					firstName,
 					lastName,
 					email,
@@ -92,8 +92,8 @@ const resolvers = {
 				},
 			}
 		) {
-			//validate parent data
-			const { errors, valid } = validateParentSignUpInput(
+			//validate user data
+			const { errors, valid } = validateSignUpInput(
 				firstName,
 				lastName,
 				email,
@@ -108,9 +108,9 @@ const resolvers = {
 				throw new UserInputError(`Errors`, { errors });
 			}
 
-			// make sure parent doesn't already exist
-			const parent = await Parent.findOne({ email });
-			if (parent) {
+			// make sure user doesn't already exist
+			const user = await User.findOne({ email });
+			if (user) {
 				throw new UserInputError('email already exists in database', {
 					errors: {
 						email: 'This email already exists in database',
@@ -120,7 +120,7 @@ const resolvers = {
 
 			// hash password and create an auth token
 			password = await bcrypt.hash(password, 12);
-			const newParent = new Parent({
+			const newUser = new User({
 				firstName,
 				lastName,
 				email,
@@ -132,7 +132,7 @@ const resolvers = {
 				userRole,
 				createdAt: new Date().toISOString(),
 			});
-			const res = await newParent.save();
+			const res = await newUser.save();
 			const token = generateToken(res);
 
 			return {

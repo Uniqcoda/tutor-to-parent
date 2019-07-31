@@ -1,11 +1,10 @@
-const parentResolvers = require('./parent');
-const tutorResolvers = require('./tutor');
+const userResolvers = require('./users');
 
 module.exports = {
 	Query: {
-		...parentResolvers.Query,
+		...userResolvers.Query,
 	},
 	Mutation: {
-		...parentResolvers.Mutation,
+		...userResolvers.Mutation,
 	},
 };
