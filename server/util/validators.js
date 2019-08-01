@@ -60,3 +60,41 @@ module.exports.validateLoginInput = (email, password) => {
 		valid: Object.keys(errors).length < 1,
 	};
 };
+
+module.exports.validateRequestInput = (
+	childFullName,
+	childAge,
+	childGender,
+	childClass,
+	homeAddress,
+  subjects,
+  tutorGender
+) => {
+	const errors = {};
+	if (childFullName.trim() === '') {
+		errors.childFullName = "Child's name must not be empty";
+  }
+  if (childAge === '') {
+    errors.childAge = "Child's age must not be empty";
+  }
+  if (childGender === '') {
+    errors.childGender = "Child's gender must not be empty";
+  }
+  if (childClass.trim() === '') {
+    errors.childClass = "Child's class must not be empty";
+  }
+  if (homeAddress.trim() === '') {
+    errors.homeAddress = "Child's home address must not be empty";
+  }
+  if (subjects === '') {
+    errors.subjects = "Subjects must not be empty";
+  }
+  if (tutorGender === '') {
+    errors.tutorGender = "Tutor's gender must not be empty";
+  }
+
+	return {
+		errors,
+		valid: Object.keys(errors).length < 1,
+	};
+};
