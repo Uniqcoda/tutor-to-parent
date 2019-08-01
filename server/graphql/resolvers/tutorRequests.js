@@ -14,7 +14,18 @@ const resolvers = {
 				throw new Error(error);
 			}
 		},
-
+		async getTutorRequest(_, { requestId }) {
+			try {
+				const request = await TutorRequest.findById(requestId);
+				if (request) {
+					return request;
+				} else {
+					throw new Error('TutorRequest not found');
+				}
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
 	},
 
 };
