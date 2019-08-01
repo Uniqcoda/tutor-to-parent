@@ -30,7 +30,7 @@ export default function TutorSignUp() {
 							</section>
 							<section className='8 wide column'>
 								<Segment>
-									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Become a Tutor</h2>
+									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Register as a Tutor</h2>
 									<SignUpForm userRole='tutor' />
 									<Message style={{ textAlign: 'center' }}>
 										Already registered? <Link to='/login'>Login</Link>
