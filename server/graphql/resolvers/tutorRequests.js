@@ -28,6 +28,48 @@ const resolvers = {
 		},
 	},
 
+	Mutation: {
+		async tutorRequest(
+			_,
+			{ tutorRequestInput: { childFullName, childAge, childGender, childClass, homeAddress, subjects, tutorGender } },
+			context
+		) {
+			//validate request data
+			const { errors, valid } = validateRequestInput(
+				childFullName,
+				childAge,
+				childGender,
+				childClass,
+				homeAddress,
+				subjects,
+				tutorGender
+			);
+			if (!valid) {
+				throw new UserInputError(`Errors`, { errors });
+			}
+
+			const user = await checkAuth(context);
+
+			if (user.userRole !== 'parent') {
+				throw new UserInputError('Only a parent can make a tutor request');
+			}
+			const newRequest = new TutorRequest({
+				userId: user.id,
+				userEmail: user.email,
+				childFullName,
+				childAge,
+				childGender,
+				childClass,
+				homeAddress,
+				subjects,
+				tutorGender,
+				createdAt: new Date().toISOString(),
+			});
+			const request = await newRequest.save();
+			return request;
+		},
+
+	},
 };
 
 module.exports = resolvers;
