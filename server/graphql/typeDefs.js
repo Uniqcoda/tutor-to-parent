@@ -5,14 +5,27 @@ const typeDefs = gql`
 		id: ID!
 		firstName: String
 		lastName: String
-		email: String!
+		email: String
 		phone: String
 		gender: String
 		stateOfRes: String
 		location: String
-		userRole: String!
+		userRole: String
 		createdAt: String
 		token: String!
+	}
+	type TutorRequest {
+		id: ID!
+		userId: String!
+		userEmail: String!
+		childFullName: String
+		childAge: Int
+		childGender: String
+		childClass: String
+		homeAddress: String
+		subjects: [String]
+		tutorGender: String
+		createdAt: String
 	}
 	input SignUpInput {
 		firstName: String!
@@ -26,14 +39,27 @@ const typeDefs = gql`
 		confirmPassword: String!
 		userRole: String!
 	}
+	input TutorRequestInput {
+		childFullName: String!
+		childAge: Int!
+		childGender: String!
+		childClass: String!
+		homeAddress: String!
+		subjects: [String]!
+		tutorGender: String!
+	}
 	type Query {
 		getUsers: [User]
 		getUser(userId: ID!): User
+		getTutorRequests: [TutorRequest]
+		getTutorRequest(requestId: ID!): TutorRequest
 	}
 	type Mutation {
 		signUp(signUpInput: SignUpInput): User!
 		login(email: String!, password: String!): User!
 		deleteUser(userId: ID!): String!
+		tutorRequest(tutorRequestInput: TutorRequestInput): TutorRequest!
+		deleteRequest(requestId: ID!): String!
 	}
 `;
 
