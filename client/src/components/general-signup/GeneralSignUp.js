@@ -1,11 +1,12 @@
 import React from 'react';
-import NavBar from '../navbar/NavBar';
 import { Link } from 'react-router-dom';
-import SignUpForm from '../sign-up-form/SignUpForm';
 import { Segment, Message } from 'semantic-ui-react';
+
+import SignUpForm from '../sign-up-form/SignUpForm';
+import NavBar from '../navbar/NavBar';
 import Aside from '../sign-up-form/Aside';
 
-export default function ParentSignUp() {
+export default function GeneralSignUp() {
 	return (
 		<>
 			<div>
@@ -26,12 +27,12 @@ export default function ParentSignUp() {
 						</header>
 						<div className='ui two column stackable grid' style={{ marginTop: '10px' }}>
 							<section className='8 wide column'>
-								<Aside/>
+								<Aside />
 							</section>
 							<section className='8 wide column'>
 								<Segment>
 									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Register as a Parent</h2>
-									<SignUpForm userRole='parent' />
+									<SignUpForm userRole='general' />
 									<Message style={{ textAlign: 'center' }}>
 										Already registered? <Link to='/login'>Login</Link>
 									</Message>

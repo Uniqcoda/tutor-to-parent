@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Segment, Header, Image, Menu } from 'semantic-ui-react';
-import NavBar from '../navbar/NavBar';
-import getInfoFromURL from './getInfoFromURL';
 import Axios from 'axios';
 
-const TutorDashborad = () => {
+import NavBar from '../navbar/NavBar';
+import getInfoFromURL from './getInfoFromURL';
+
+const GeneralDashborad = () => {
 	const [userProfile, setUserProfile] = useState({});
 	const showProfileDetails = event => {};
 	const showMyRequests = event => {};
@@ -164,4 +165,4 @@ const TutorDashborad = () => {
 	);
 };
 
-export default TutorDashborad;
+export default GeneralDashborad;

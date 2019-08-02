@@ -1,8 +1,9 @@
 import React from 'react';
 import NavBar from '../navbar/NavBar';
 import { Link } from 'react-router-dom';
-import SignUpForm from '../sign-up-form/SignUpForm';
 import { Segment, Message } from 'semantic-ui-react';
+
+import SignUpForm from '../sign-up-form/SignUpForm';
 import Aside from '../sign-up-form/Aside';
 
 export default function TutorSignUp() {

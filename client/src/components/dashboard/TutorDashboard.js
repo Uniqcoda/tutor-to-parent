@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Segment, Header, Image, Menu } from 'semantic-ui-react';
+import Axios from 'axios';
+
 import NavBar from '../navbar/NavBar';
 import getInfoFromURL from './getInfoFromURL';
-import Axios from 'axios';
 
 const TutorDashborad = () => {
 	const [userProfile, setUserProfile] = useState({});

@@ -9,6 +9,7 @@ const resolvers = {
 		async getTutorRequests() {
 			try {
 				const tutorRequests = await TutorRequest.find().sort({ createdAt: -1 });
+
 				return tutorRequests;
 			} catch (error) {
 				throw new Error(error);
@@ -17,10 +18,11 @@ const resolvers = {
 		async getTutorRequest(_, { requestId }) {
 			try {
 				const request = await TutorRequest.findById(requestId);
+
 				if (request) {
 					return request;
 				} else {
-					throw new Error('TutorRequest not found');
+					throw new Error('Tutor Request not found');
 				}
 			} catch (error) {
 				throw new Error(error);
@@ -50,9 +52,6 @@ const resolvers = {
 
 			const user = await checkAuth(context);
 
-			if (user.userRole !== 'parent') {
-				throw new UserInputError('Only a parent can make a tutor request');
-			}
 			const newRequest = new TutorRequest({
 				userId: user.id,
 				userEmail: user.email,
@@ -65,10 +64,30 @@ const resolvers = {
 				tutorGender,
 				createdAt: new Date().toISOString(),
 			});
+
 			const request = await newRequest.save();
 			return request;
 		},
+		async deleteRequest(_, { requestId }, context) {
+			const user = await checkAuth(context);
 
+			try {
+				const request = await TutorRequest.findById(requestId);
+				if (!request) {
+					throw new Error('Tutor Request not found');
+				}
+
+				if (user.email.toString() === request.userEmail.toString()) {
+					await request.delete();
+
+					return 'Tutor request deleted successfully!';
+				} else {
+					throw new AuthenticationError('Permission denied');
+				}
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
 	},
 };
 
