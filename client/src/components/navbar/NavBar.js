@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavBar({className, style}) {
+export default function NavBar({ className, style }) {
 	return (
 		<div className={className} style={style}>
 			<div className='ui container'>
@@ -13,6 +13,9 @@ export default function NavBar({className, style}) {
 				</Link>
 				<Link to='/get-a-tutor' className='item'>
 					Get a Tutor
+				</Link>
+				<Link to='/tutor-requests' className='item'>
+					View Requests
 				</Link>
 				<Link to='/contact-us' className='item'>
 					Contact
