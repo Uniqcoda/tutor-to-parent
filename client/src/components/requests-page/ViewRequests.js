@@ -1,7 +1,35 @@
 import React from 'react';
 import NavBar from '../navbar/NavBar';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
+import { Grid } from 'semantic-ui-react';
+import RequestCard from './RequestCard';
+import Stats from '../statistics/Stats';
+// import Pagination from '../pagination/Pagination';
+
+const FETCH_REQUEST_QUERY = gql`
+	{
+		getTutorRequests {
+			id
+			userId
+			childFullName
+			childAge
+			childGender
+			childClass
+			subjects
+			tutorGender
+			location
+      createdAt
+		}
+	}
+`;
 
 export default function ViewRequests() {
+	const {
+		loading,
+		data: { getTutorRequests: tutorRequests },
+	} = useQuery(FETCH_REQUEST_QUERY);
+
 	return (
 		<>
 			<div
@@ -21,8 +49,25 @@ export default function ViewRequests() {
 					</header>
 				</div>
 			</div>
-			<div>
-				<p>This is the view all requests page</p>
+			<div style={{ padding: '0em 2em' }}>
+				<Stats />
+				<Grid columns={3} divided>
+					<Grid.Row />
+					<Grid.Row>
+						{loading ? (
+							<h3>Loading Requests</h3>
+						) : (
+							tutorRequests &&
+							tutorRequests.map(request => {                
+							return	<Grid.Column key={request.id} style={{ marginBottom: '20px'}}>
+									<RequestCard request={request} />
+								</Grid.Column>
+							
+            })
+            )}
+					</Grid.Row>
+				</Grid>{' '}
+				{/* <Pagination /> */}
 			</div>
 		</>
 	);
