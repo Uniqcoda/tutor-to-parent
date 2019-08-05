@@ -25,6 +25,7 @@ const typeDefs = gql`
 		homeAddress: String
 		subjects: [String]
 		tutorGender: String
+		location: String
 		createdAt: String
 	}
 	input SignUpInput {
@@ -47,6 +48,7 @@ const typeDefs = gql`
 		homeAddress: String!
 		subjects: [String]!
 		tutorGender: String!
+		location: String!
 	}
 	type Query {
 		getUsers: [User]

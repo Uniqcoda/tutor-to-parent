@@ -33,7 +33,18 @@ const resolvers = {
 	Mutation: {
 		async tutorRequest(
 			_,
-			{ tutorRequestInput: { childFullName, childAge, childGender, childClass, homeAddress, subjects, tutorGender } },
+			{
+				tutorRequestInput: {
+					childFullName,
+					childAge,
+					childGender,
+					childClass,
+					homeAddress,
+					subjects,
+					tutorGender,
+					location,
+				},
+			},
 			context
 		) {
 			//validate request data
@@ -44,7 +55,8 @@ const resolvers = {
 				childClass,
 				homeAddress,
 				subjects,
-				tutorGender
+				tutorGender,
+				location
 			);
 			if (!valid) {
 				throw new UserInputError(`Errors`, { errors });
@@ -62,6 +74,7 @@ const resolvers = {
 				homeAddress,
 				subjects,
 				tutorGender,
+				location,
 				createdAt: new Date().toISOString(),
 			});
 

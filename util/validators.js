@@ -67,31 +67,35 @@ module.exports.validateRequestInput = (
 	childGender,
 	childClass,
 	homeAddress,
-  subjects,
-  tutorGender
+	subjects,
+	tutorGender,
+	location
 ) => {
 	const errors = {};
 	if (childFullName.trim() === '') {
 		errors.childFullName = "Child's name must not be empty";
-  }
-  if (childAge === '') {
-    errors.childAge = "Child's age must not be empty";
-  }
-  if (childGender === '') {
-    errors.childGender = "Child's gender must not be empty";
-  }
-  if (childClass.trim() === '') {
-    errors.childClass = "Child's class must not be empty";
-  }
-  if (homeAddress.trim() === '') {
-    errors.homeAddress = "Child's home address must not be empty";
-  }
-  if (subjects === '') {
-    errors.subjects = "Subjects must not be empty";
-  }
-  if (tutorGender === '') {
-    errors.tutorGender = "Tutor's gender must not be empty";
-  }
+	}
+	if (childAge === '') {
+		errors.childAge = "Child's age must not be empty";
+	}
+	if (childGender === '') {
+		errors.childGender = "Child's gender must not be empty";
+	}
+	if (childClass.trim() === '') {
+		errors.childClass = "Child's class must not be empty";
+	}
+	if (homeAddress.trim() === '') {
+		errors.homeAddress = "Child's home address must not be empty";
+	}
+	if (subjects === '') {
+		errors.subjects = 'Subjects must not be empty';
+	}
+	if (tutorGender === '') {
+		errors.tutorGender = "Tutor's gender must not be empty";
+	}
+	if (location.trim() === '') {
+		errors.location = 'Location must not be empty';
+	}
 
 	return {
 		errors,

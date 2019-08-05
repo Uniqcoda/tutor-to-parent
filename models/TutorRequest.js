@@ -13,6 +13,7 @@ const tutorRequestSChema = new Schema({
 	homeAddress: String,
 	subjects: [String],
 	tutorGender: String,
+	location: String,
 	createdAt: String,
 });
 

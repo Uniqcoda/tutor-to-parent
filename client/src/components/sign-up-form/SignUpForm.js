@@ -1,7 +1,50 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Button } from 'semantic-ui-react';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
+const SIGN_UP = gql`
+	mutation signUp(
+		$firstName: String!
+		$lastName: String!
+		$email: String!
+		$phone: String!
+		$gender: String!
+		$stateOfRes: String!
+		$location: String!
+		$password: String!
+		$confirmPassword: String!
+		$userRole: String!
+	) {
+		signUp(
+			signUpInput: {
+				firstName: $firstName
+				lastName: $lastName
+				email: $email
+				phone: $phone
+				gender: $gender
+				stateOfRes: $stateOfRes
+				location: $location
+				password: $password
+				confirmPassword: $confirmPassword
+				userRole: $userRole
+			}
+		) {
+			id
+			firstName
+			lastName
+			email
+			phone
+			gender
+			stateOfRes
+			location
+			userRole
+			createdAt
+			token
+		}
+	}
+`;
 
 function SignUpForm({ userRole, history }) {
 	const selectState = [
@@ -99,7 +142,8 @@ function SignUpForm({ userRole, history }) {
 					placeholder='First name'
 					name='firstName'
 					value={values.firstName}
-					onChange={onChange} required 
+					onChange={onChange}
+					required
 				/>
 				<Form.Input
 					fluid
@@ -109,7 +153,8 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Last name'
 					name='lastName'
 					value={values.lastName}
-					onChange={onChange} required
+					onChange={onChange}
+					required
 				/>
 			</Form.Group>
 			<Form.Group widths='equal'>
@@ -121,7 +166,8 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Email Address'
 					name='email'
 					value={values.email}
-					onChange={onChange} required
+					onChange={onChange}
+					required
 				/>
 				<Form.Input
 					fluid
@@ -131,7 +177,8 @@ function SignUpForm({ userRole, history }) {
 					placeholder='+234'
 					name='phone'
 					value={values.phone}
-					onChange={onChange} required
+					onChange={onChange}
+					required
 				/>
 			</Form.Group>
 
@@ -145,7 +192,8 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Password'
 					name='password'
 					value={values.password}
-					onChange={onChange} required
+					onChange={onChange}
+					required
 				/>
 				<Form.Input
 					fluid
@@ -156,7 +204,8 @@ function SignUpForm({ userRole, history }) {
 					placeholder='Confirm Password'
 					name='confirmPassword'
 					value={values.confirmPassword}
-					onChange={onChange} required
+					onChange={onChange}
+					required
 				/>
 			</Form.Group>
 			<Form.Group widths='equal'>
@@ -166,7 +215,8 @@ function SignUpForm({ userRole, history }) {
 					options={selectState}
 					placeholder='state'
 					// value={values.stateOfRes}
-					onChange={onChange} required
+					onChange={onChange}
+					required
 				/>
 				<Form.Select
 					label='Location'
@@ -174,7 +224,8 @@ function SignUpForm({ userRole, history }) {
 					options={selectLocation}
 					placeholder='location'
 					// value={values.location}
-					onChange={onChange} required
+					onChange={onChange}
+					required
 				/>
 			</Form.Group>
 			<Form.Group widths='equal'>
