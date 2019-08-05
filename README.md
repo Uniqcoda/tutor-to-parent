@@ -13,3 +13,13 @@ This platform will match tutors with parents for private lessons.
 ## Platform User
 * Tutors
 * Parents
+
+## Tools Utilized
+* React
+* Semantic UI
+* MongoDB (Atlas)
+* Express
+* NodeJS
+* GraphQL (Apollo)
+* JWT
+* Bycrypt
