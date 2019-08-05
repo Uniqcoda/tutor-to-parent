@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Form, Icon } from 'semantic-ui-react';
 
 import NavBar from '../navbar/NavBar';
+import Stats from '../statistics/Stats';
 
 export default function HomePage() {
 	return (
@@ -21,7 +22,7 @@ export default function HomePage() {
 				>
 					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', width: '100%', minHeight: '700px' }}>
 						<header>
-							<NavBar className='ui stackable inverted pointing secondary menu'/>
+							<NavBar className='ui stackable inverted pointing secondary menu' />
 						</header>
 
 						<div className='ui text container'>
@@ -40,7 +41,7 @@ export default function HomePage() {
 							<Form>
 								<Form.Group>
 									<input placeholder='What do you want to learn?' />
-									<Button type='submit' style={{marginLeft: '2px'}} primary>
+									<Button type='submit' style={{ marginLeft: '2px' }} primary>
 										<Icon name='search' />
 									</Button>
 								</Form.Group>
@@ -50,8 +51,9 @@ export default function HomePage() {
 				</div>
 			</div>
 			<main>
-				<div style={{ padding: '8em 0em' }} className='ui vertical segment'>
+				<div style={{ padding: '2em 0em' }} className='ui vertical segment'>
 					<div className='ui text container'>
+						<Stats />
 						<h3 style={{ fontSize: '2em' }} className='ui header'>
 							Become a Tutor Today
 						</h3>
