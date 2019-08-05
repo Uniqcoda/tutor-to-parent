@@ -1,4 +1,4 @@
-# tutor-to-parent
+# TUTOR TO PARENT APP
 
 ## An online platform that matches Professional Private tutors to Parents for their kids.
 
@@ -11,5 +11,5 @@ There is a need for professional private tutors for children that need extra cla
 This platform will match tutors with parents for private lessons.
 
 ## Platform User
-Tutors
-Parents
+* Tutors
+* Parents
