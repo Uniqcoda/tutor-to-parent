@@ -6,7 +6,7 @@ import { Segment, Message } from 'semantic-ui-react';
 import SignUpForm from '../sign-up-form/SignUpForm';
 import Aside from '../sign-up-form/Aside';
 
-export default function TutorSignUp() {
+export default function TutorSignUp(props) {
 	return (
 		<>
 			<div>
@@ -32,7 +32,7 @@ export default function TutorSignUp() {
 							<section className='8 wide column'>
 								<Segment>
 									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Register as a Tutor</h2>
-									<SignUpForm userRole='tutor' />
+									<SignUpForm history={props.history} userRole='tutor' />
 									<Message style={{ textAlign: 'center' }}>
 										Already registered? <Link to='/login'>Login</Link>
 									</Message>

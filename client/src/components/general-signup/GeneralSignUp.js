@@ -6,7 +6,7 @@ import SignUpForm from '../sign-up-form/SignUpForm';
 import NavBar from '../navbar/NavBar';
 import Aside from '../sign-up-form/Aside';
 
-export default function GeneralSignUp() {
+export default function GeneralSignUp(props) {
 	return (
 		<>
 			<div>
@@ -32,7 +32,7 @@ export default function GeneralSignUp() {
 							<section className='8 wide column'>
 								<Segment>
 									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Register as a Parent</h2>
-									<SignUpForm userRole='general' />
+									<SignUpForm history={props.history} userRole='general' />
 									<Message style={{ textAlign: 'center' }}>
 										Already registered? <Link to='/login'>Login</Link>
 									</Message>
