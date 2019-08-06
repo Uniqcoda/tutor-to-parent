@@ -25,7 +25,7 @@ export default function RequestCard(props) {
 
 	return (
 		<div>
-			<Card centered>
+			<Card centered fluid>
 				<Card.Content>
 					<Image floated='right' size='mini' src={genderImage(childGender)} />
 					<Card.Header>Tutor Request</Card.Header>

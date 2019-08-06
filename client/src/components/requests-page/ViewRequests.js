@@ -19,7 +19,7 @@ const FETCH_REQUEST_QUERY = gql`
 			subjects
 			tutorGender
 			location
-      createdAt
+			createdAt
 		}
 	}
 `;
@@ -51,20 +51,21 @@ export default function ViewRequests() {
 			</div>
 			<div style={{ padding: '0em 2em' }}>
 				<Stats />
-				<Grid columns={3} divided>
+				<Grid stackable columns={3}>
 					<Grid.Row />
 					<Grid.Row>
 						{loading ? (
 							<h3>Loading Requests</h3>
 						) : (
 							tutorRequests &&
-							tutorRequests.map(request => {                
-							return	<Grid.Column key={request.id} style={{ marginBottom: '20px'}}>
-									<RequestCard request={request} />
-								</Grid.Column>
-							
-            })
-            )}
+							tutorRequests.map(request => {
+								return (
+									<Grid.Column key={request.id} style={{ marginBottom: '20px' }}>
+										<RequestCard request={request} />
+									</Grid.Column>
+								);
+							})
+						)}
 					</Grid.Row>
 				</Grid>{' '}
 				{/* <Pagination /> */}

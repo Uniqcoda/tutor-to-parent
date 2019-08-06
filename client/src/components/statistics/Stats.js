@@ -4,7 +4,7 @@ import { Statistic } from 'semantic-ui-react';
 export default function Stats() {
 	return (
 		<div>
-			<Statistic.Group widths='three'>
+			<Statistic.Group style={{padding: '2em 1em'}} widths='three'>
 				<Statistic  color='green' size='small'>
 					<Statistic.Value>304</Statistic.Value>
 					<Statistic.Label>Requests</Statistic.Label>
