@@ -1,40 +1,65 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Form, Message, Segment } from 'semantic-ui-react';
-import Axios from 'axios';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+
+const LOG_IN = gql`
+	mutation signUp($email: String!, $password: String!) {
+		login(email: $email, password: $password) {
+			id
+			firstName
+			lastName
+			email
+			phone
+			gender
+			stateOfRes
+			location
+			userRole
+			createdAt
+			token
+		}
+	}
+`;
 
 function LoginForm(props) {
+	const [errors, setErrors] = useState({});
+
 	const [values, setValues] = useState({
+		firstName: '',
+		lastName: '',
 		email: '',
+		phone: '',
+		gender: '',
+		stateOfRes: '',
+		location: '',
 		password: '',
+		confirmPassword: '',
+		userRole: props.userRole,
 	});
 
-	const onChange = event => {
-		setValues({ ...values, [event.target.name]: event.target.value });
+	const onChange = (event, { name, value }) => {
+		setValues({ ...values, [name]: value });
 	};
+
+	const [data, { loading }] = useMutation(LOG_IN, {
+		update(_, result) {
+			props.history.push('/tutor-requests');
+		},
+		onError(err) {
+			setErrors(err.graphQLErrors[0].extensions.exception.errors);
+		},
+		variables: values,
+	});
+
 	const onSubmit = event => {
 		event.preventDefault();
-		Axios.get(`http://localhost:3000/users?email=${values.email}`)
-			.then(data => data.data)
-			.then(user => {
-				if (user[0].password === values.password) {
-					alert(`Welcome ${user[0].firstName}`);
-					if (user[0].userRole === 'tutor') {
-						props.history.push(`/tutor-dashboard/${user[0].email}`);
-					}
-					if (user[0].userRole === 'parent') {
-						props.history.push(`/parent-dashboard/${user[0].email}`);
-					}
-				} else {
-					alert('email or password incorrect');
-				}
-			})
-			.catch(err => alert('email is incorrect'));
+		data();
 	};
 	return (
 		<div>
 			<Segment>
-				<Form size='large' onSubmit={onSubmit}>
+				<Form className={loading ? 'loading' : ''} size='large' onSubmit={onSubmit}>
 					<Form.Input
 						fluid
 						icon='mail'
@@ -43,6 +68,7 @@ function LoginForm(props) {
 						placeholder='Email address'
 						name='email'
 						value={values.email}
+						error={errors.email ? true : false}
 						onChange={onChange}
 					/>
 					<Form.Input
@@ -54,6 +80,7 @@ function LoginForm(props) {
 						type='password'
 						name='password'
 						value={values.password}
+						error={errors.password ? true : false}
 						onChange={onChange}
 					/>
 
@@ -66,6 +93,15 @@ function LoginForm(props) {
 				Not registered yet? <Link to='/become-a-tutor'>Sign Up as a Tutor</Link> |{' '}
 				<Link to='/get-a-tutor'>Sign Up as a Parent</Link>
 			</Message>
+			{Object.keys(errors).length > 0 && (
+				<div className='ui error message'>
+					<ul className='list'>
+						{Object.values(errors).map((value, index) => (
+							<li key={index}>{value}</li>
+						))}
+					</ul>
+				</div>
+			)}
 		</div>
 	);
 }

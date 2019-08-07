@@ -3,7 +3,7 @@ import React from 'react';
 import NavBar from '../navbar/NavBar';
 import LoginForm from './LoginForm';
 
-export default function Login() {
+export default function Login(props) {
 	return (
 		<div>
 			<div
@@ -19,11 +19,11 @@ export default function Login() {
 			>
 				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '700px' }}>
 					<header>
-						<NavBar className='ui stackable inverted pointing secondary menu'/>
+						<NavBar className='ui stackable inverted pointing secondary menu' />
 					</header>
-						<div className='ui one column stackable center aligned page grid' style={{marginTop: '10px'}}>
-							<LoginForm />
-						</div>
+					<div className='ui one column stackable center aligned page grid' style={{ marginTop: '10px' }}>
+						<LoginForm history={props.history} />
+					</div>
 				</div>
 			</div>
 		</div>
