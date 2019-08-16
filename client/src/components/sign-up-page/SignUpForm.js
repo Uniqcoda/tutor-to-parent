@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
+
+import { AuthContext } from '../../context/auth';
 
 const SIGN_UP = gql`
 	mutation signUp(
@@ -46,6 +48,7 @@ const SIGN_UP = gql`
 `;
 
 function SignUpForm(props) {
+	const context = useContext(AuthContext);
 	const selectState = [
 		{ key: 'l', text: 'Lagos', value: 'Lagos' },
 		{ key: 'e', text: 'Enugu', value: 'Enugu' },
@@ -84,8 +87,9 @@ function SignUpForm(props) {
 	};
 
 	const [data, { loading }] = useMutation(SIGN_UP, {
-		update(_, result) {
-			props.history.push('/login');
+		update(_, { data: { signUp: userData } }) {
+			context.login(userData);
+			props.history.push('/general-dashboard');
 		},
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);
