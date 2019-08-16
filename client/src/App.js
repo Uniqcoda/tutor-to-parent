@@ -4,9 +4,9 @@ import Homepage from './components/homepage/HomePage';
 import Footer from './components/footer/Footer';
 import TutorSignUp from './components/sign-up-page/TutorSignUpPage';
 import GeneralSignUp from './components/sign-up-page/GeneralSignUpPage';
-import Login from './components/login/Login';
-import TutorDashborad from './components/dashboard/TutorDashboard';
-import GeneralDashboard from './components/dashboard/GeneralDashboard';
+import Login from './components/login-page/LoginPage';
+import TutorDashborad from './components/dashboard-page/TutorDashboard';
+import GeneralDashboard from './components/dashboard-page/GeneralDashboard';
 import ViewRequests from './components/requests-page/ViewRequests'
 import ContactPage from './components/contact-page/ContactPage'
 

@@ -6,12 +6,14 @@ import Axios from 'axios';
 import NavBar from '../navbar/NavBar';
 import getInfoFromURL from './getInfoFromURL';
 
-const TutorDashborad = () => {
+const GeneralDashborad = () => {
 	const [userProfile, setUserProfile] = useState({});
 	const showProfileDetails = event => {};
-	const showTutorRequests = event => {};
+	const showMyRequests = event => {};
 	const showSchedule = event => {};
 	const showContacts = event => {};
+	const showMyChildren = event => {};
+
 	const userEmail = getInfoFromURL();
 
 	useEffect(() => {
@@ -42,13 +44,13 @@ const TutorDashborad = () => {
 					backgroundPosition: 'center',
 					backgroundSize: 'cover',
 					width: '100%',
-					minHeight: '10px',
+					minHeight: '700px',
 					padding: '0px',
 				}}
 			>
 				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '10px' }}>
 					<header>
-						<NavBar className='ui stackable inverted pointing secondary menu' />
+						<NavBar />
 					</header>
 				</div>
 			</div>
@@ -60,14 +62,17 @@ const TutorDashborad = () => {
 							<Link to='' onClick={showProfileDetails} className='item'>
 								My Profile
 							</Link>
+							<Link to='' onClick={showMyChildren} className='item'>
+								My Children
+							</Link>
 							<Link to='' onClick={showSchedule} className='item'>
 								My Schedule
 							</Link>
 							<Link to='' onClick={showContacts} className='item'>
 								My Contacts
 							</Link>
-							<Link to='' onClick={showTutorRequests} className='item'>
-								Tutor Requests
+							<Link to='' onClick={showMyRequests} className='item'>
+								My Requests
 							</Link>
 							<Link to='' className='item'>
 								Others
@@ -86,7 +91,7 @@ const TutorDashborad = () => {
 							</Link>
 						</Menu>
 					</Grid.Column>
-					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem' }}>
+					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem', paddingTop: '1.5rem' }}>
 						<Grid className='ui two column stackable grid'>
 							<Grid.Row>
 								<Grid.Column className='ui aligned' width={8}>
@@ -126,7 +131,7 @@ const TutorDashborad = () => {
 								<Grid.Column width={8}>
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											CERTIFICATION
+											MY REQUESTS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
@@ -160,4 +165,4 @@ const TutorDashborad = () => {
 	);
 };
 
-export default TutorDashborad;
+export default GeneralDashborad;

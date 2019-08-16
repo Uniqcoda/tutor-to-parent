@@ -22,7 +22,7 @@ export default function HomePage() {
 				>
 					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', width: '100%', minHeight: '700px' }}>
 						<header>
-							<NavBar className='ui stackable inverted pointing secondary menu' />
+							<NavBar/>
 						</header>
 
 						<div className='ui text container'>

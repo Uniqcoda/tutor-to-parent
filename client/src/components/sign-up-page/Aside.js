@@ -4,7 +4,7 @@ export default function Aside() {
 	return (
 		<>
 			{' '}
-			<div style={{ marginTop: '2em' }}>
+			<div style={{ marginTop: '4em' }}>
 				<h3
 					className='ui inverted header'
 					style={{

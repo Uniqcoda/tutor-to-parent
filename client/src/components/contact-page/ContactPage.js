@@ -17,7 +17,7 @@ export default function ContactPage() {
 			>
 				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '10px' }}>
 					<header>
-						<NavBar className='ui stackable inverted pointing secondary menu' />
+						<NavBar />
 					</header>
 				</div>
 			</div>

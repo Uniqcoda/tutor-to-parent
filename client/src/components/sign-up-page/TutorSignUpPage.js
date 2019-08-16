@@ -21,13 +21,13 @@ export default function TutorSignUp(props) {
 						padding: '0px',
 					}}
 				>
-					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', width: '100%', minHeight: '700px' }}>
+					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', width: '100%', minHeight: '700px' }}>
 						<header>
-							<NavBar className='ui stackable inverted pointing secondary menu' />
+							<NavBar/>
 						</header>
 						<div className='ui two column stackable grid' style={{ marginTop: '10px' }}>
 							<section className='8 wide column'>
-								<Segment style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+								<Segment style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', margin: '0 0.7rem' }}>
 									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Register as a Tutor</h2>
 									<SignUpForm history={props.history} userRole='tutor' />
 									<Message style={{ textAlign: 'center' }}>

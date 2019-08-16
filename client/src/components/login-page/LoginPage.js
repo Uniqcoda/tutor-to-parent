@@ -17,11 +17,11 @@ export default function Login(props) {
 					padding: '0px',
 				}}
 			>
-				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '700px' }}>
+				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', width: '100%', minHeight: '700px' }}>
 					<header>
-						<NavBar className='ui stackable inverted pointing secondary menu' />
+						<NavBar/>
 					</header>
-					<div className='ui one column stackable center aligned page grid' style={{ marginTop: '10px' }}>
+					<div className='ui one column center aligned page grid' style={{ marginTop: '4em' }}>
 						<LoginForm history={props.history} />
 					</div>
 				</div>
