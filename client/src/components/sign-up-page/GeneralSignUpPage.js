@@ -1,19 +1,20 @@
 import React from 'react';
-import NavBar from '../navbar/NavBar';
 import { Link } from 'react-router-dom';
 import { Segment, Message } from 'semantic-ui-react';
 
-import SignUpForm from '../sign-up-form/SignUpForm';
-import Aside from '../sign-up-form/Aside';
+import SignUpForm from './SignUpForm';
+import NavBar from '../navbar/NavBar';
+import Aside from './Aside';
+import './form.css';
 
-export default function TutorSignUp(props) {
+export default function GeneralSignUp(props) {
 	return (
 		<>
 			<div>
 				<div
 					className='ui inverted vertical aligned segment'
 					style={{
-						backgroundImage: "url('/assets/childnteacher.jpg')",
+						backgroundImage: "url('/assets/children-in-school.jpg')",
 						backgroundPosition: 'center',
 						backgroundSize: 'cover',
 						width: '100%',
@@ -27,16 +28,16 @@ export default function TutorSignUp(props) {
 						</header>
 						<div className='ui two column stackable grid' style={{ marginTop: '10px' }}>
 							<section className='8 wide column'>
-								<Aside />
-							</section>
-							<section className='8 wide column'>
-								<Segment>
-									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Register as a Tutor</h2>
-									<SignUpForm history={props.history} userRole='tutor' />
+								<Segment style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+									<h2 style={{ color: '#2185d0', textAlign: 'center' }}>Register as a Parent</h2>
+									<SignUpForm history={props.history} userRole='general' />
 									<Message style={{ textAlign: 'center' }}>
 										Already registered? <Link to='/login'>Login</Link>
 									</Message>
 								</Segment>
+							</section>
+							<section className='8 wide column'>
+								<Aside />
 							</section>
 						</div>
 					</div>

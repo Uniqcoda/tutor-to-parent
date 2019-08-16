@@ -46,7 +46,6 @@ const SIGN_UP = gql`
 `;
 
 function SignUpForm(props) {
-
 	const selectState = [
 		{ key: 'l', text: 'Lagos', value: 'Lagos' },
 		{ key: 'e', text: 'Enugu', value: 'Enugu' },
@@ -101,14 +100,10 @@ function SignUpForm(props) {
 
 	return (
 		<>
-			<form
-				className={loading ? 'ui form loading' : 'ui form'}
-				size='large'
-				style={{ backgroundColor: 'white' }}
-				onSubmit={onSubmit}
-			>
+			<form className={loading ? 'ui form loading' : 'ui form'} size='large' onSubmit={onSubmit}>
 				<Form.Group widths='equal'>
 					<Form.Input
+						className='inputt'
 						fluid
 						icon='user'
 						label='First name'
@@ -209,7 +204,7 @@ function SignUpForm(props) {
 						error={errors.gender ? true : false}
 						onChange={onChange}
 					/>
-					<Form.Checkbox label='By registering, you agree to our terms and policies' onChange={onChange} />
+					<Form.Checkbox label='By registering, you agree to our terms and policies' required />
 				</Form.Group>
 				<Button color='blue' fluid size='large'>
 					Submit

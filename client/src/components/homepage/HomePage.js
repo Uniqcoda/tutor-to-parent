@@ -12,7 +12,7 @@ export default function HomePage() {
 				<div
 					className='ui inverted vertical center aligned segment'
 					style={{
-						backgroundImage: "url('/assets/childnteacher.jpg')",
+						backgroundImage: "url('/assets/school-boy.jpg')",
 						backgroundPosition: 'center',
 						backgroundSize: 'cover',
 						width: '100%',
@@ -20,7 +20,7 @@ export default function HomePage() {
 						padding: '0px',
 					}}
 				>
-					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', width: '100%', minHeight: '700px' }}>
+					<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)', width: '100%', minHeight: '700px' }}>
 						<header>
 							<NavBar className='ui stackable inverted pointing secondary menu' />
 						</header>
@@ -28,19 +28,30 @@ export default function HomePage() {
 						<div className='ui text container'>
 							<h1
 								className='ui inverted header'
-								style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: '0px', marginTop: '3em' }}
+								style={{
+									fontSize: '4em',
+									fontFamily: 'sans-serif',
+									fontWeight: 'normal',
+									marginBottom: '0px',
+									marginTop: '3em',
+								}}
 							>
 								Find a Tutor
 							</h1>
 							<h2
 								className='ui inverted header'
-								style={{ fontSize: '1.7em', fontWeight: 'normal', marginTop: '1.5em' }}
+								style={{
+									fontSize: '1.5em',
+									fontFamily: 'sans-serif',
+									fontWeight: 'normal',
+									margin: '1em 0',
+								}}
 							>
 								Private lessons/trainings for every child
 							</h2>
 							<Form>
 								<Form.Group>
-									<input placeholder='What do you want to learn?' />
+									<input placeholder='What do you want to learn today?' />
 									<Button type='submit' style={{ marginLeft: '2px' }} primary>
 										<Icon name='search' />
 									</Button>
@@ -54,7 +65,7 @@ export default function HomePage() {
 				<div style={{ padding: '2em 0em' }} className='ui vertical segment'>
 					<div className='ui text container'>
 						<Stats />
-						<h3 style={{ fontSize: '2em' }} className='ui header'>
+						<h3 style={{ fontSize: '2em', textAlign: 'center' }} className='ui header'>
 							Become a Tutor Today
 						</h3>
 						<p style={{ fontSize: '1.33em' }}>
@@ -68,7 +79,7 @@ export default function HomePage() {
 						<h4 style={{ margin: '3em 0em', textTransform: 'uppercase' }} className='ui horizontal divider header'>
 							<Icon name='angle double right' />
 						</h4>
-						<h3 style={{ fontSize: '2em' }} className='ui header'>
+						<h3 style={{ fontSize: '2em', textAlign: 'center' }} className='ui header'>
 							Get a Tutor
 						</h3>
 						<p style={{ fontSize: '1.33em' }}>

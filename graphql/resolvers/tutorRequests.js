@@ -81,6 +81,7 @@ const resolvers = {
 			const request = await newRequest.save();
 			return request;
 		},
+
 		async deleteRequest(_, { requestId }, context) {
 			const user = await checkAuth(context);
 
