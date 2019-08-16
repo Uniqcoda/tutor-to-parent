@@ -5,7 +5,6 @@ import { Segment, Message } from 'semantic-ui-react';
 import SignUpForm from './SignUpForm';
 import NavBar from '../navbar/NavBar';
 import Aside from './Aside';
-import './form.css';
 
 export default function GeneralSignUp(props) {
 	return (

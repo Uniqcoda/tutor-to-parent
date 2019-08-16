@@ -44,7 +44,7 @@ const GeneralDashborad = () => {
 					backgroundPosition: 'center',
 					backgroundSize: 'cover',
 					width: '100%',
-					minHeight: '700px',
+					minHeight: '10px',
 					padding: '0px',
 				}}
 			>
@@ -54,7 +54,7 @@ const GeneralDashborad = () => {
 					</header>
 				</div>
 			</div>
-			<Grid>
+			<Grid >
 				<Grid.Row>
 					<Grid.Column width={2}>
 						<Menu icon='labeled' inverted pointing vertical style={{ height: '50rem', borderRadius: '0%' }}>
@@ -94,7 +94,7 @@ const GeneralDashborad = () => {
 					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem', paddingTop: '1.5rem' }}>
 						<Grid className='ui two column stackable grid'>
 							<Grid.Row>
-								<Grid.Column className='ui aligned' width={8}>
+								<Grid.Column className='ui aligned' >
 									<Segment>
 										<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
 										<Header as='h2' className='ui center aligned'>
@@ -128,10 +128,10 @@ const GeneralDashborad = () => {
 										</Grid>
 									</Segment>
 								</Grid.Column>
-								<Grid.Column width={8}>
+								<Grid.Column >
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											MY REQUESTS
+											UPCOMING LESSONS 
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
@@ -140,18 +140,38 @@ const GeneralDashborad = () => {
 						</Grid>
 						<Grid className='ui two column stackable grid'>
 							<Grid.Row>
-								<Grid.Column width={8}>
+								<Grid.Column >
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											UPCOMING LESSONS
+											PENDING REQUESTS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
 								</Grid.Column>
-								<Grid.Column width={8}>
+								<Grid.Column >
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											UPCOMING LESSONS
+											CONTACTS
+										</Header>
+										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+									</Segment>
+								</Grid.Column>
+							</Grid.Row>
+						</Grid>
+						<Grid className='ui two column stackable grid'>
+							<Grid.Row>
+								<Grid.Column >
+									<Segment>
+										<Header as='h3' className='ui center aligned'>
+											CERTIFICATION
+										</Header>
+										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+									</Segment>
+								</Grid.Column>
+								<Grid.Column >
+									<Segment>
+										<Header as='h3' className='ui center aligned'>
+											CONTACTS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Segment, Message } from 'semantic-ui-react';
 import SignUpForm from './SignUpForm';
 import Aside from './Aside';
-import './form.css';
 
 export default function TutorSignUp(props) {
 	return (

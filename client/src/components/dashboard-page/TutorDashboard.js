@@ -48,7 +48,7 @@ const TutorDashborad = () => {
 			>
 				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '10px' }}>
 					<header>
-						<NavBar/>
+						<NavBar />
 					</header>
 				</div>
 			</div>
@@ -86,7 +86,7 @@ const TutorDashborad = () => {
 							</Link>
 						</Menu>
 					</Grid.Column>
-					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem' }}>
+					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem', paddingTop: '1.5rem' }}>
 						<Grid className='ui two column stackable grid'>
 							<Grid.Row>
 								<Grid.Column className='ui aligned' width={8}>
@@ -126,7 +126,7 @@ const TutorDashborad = () => {
 								<Grid.Column width={8}>
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											CERTIFICATION
+											 UPCOMING LESSONS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
@@ -138,7 +138,7 @@ const TutorDashborad = () => {
 								<Grid.Column width={8}>
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											UPCOMING LESSONS
+										CERTIFICATION
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
@@ -146,7 +146,7 @@ const TutorDashborad = () => {
 								<Grid.Column width={8}>
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											UPCOMING LESSONS
+										CONTACTS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
