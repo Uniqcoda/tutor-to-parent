@@ -107,7 +107,6 @@ function SignUpForm(props) {
 			<form className={loading ? 'ui form loading' : 'ui form'} size='large' onSubmit={onSubmit}>
 				<Form.Group widths='equal'>
 					<Form.Input
-						className='inputt'
 						fluid
 						icon='user'
 						label='First name'
