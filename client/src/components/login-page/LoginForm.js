@@ -29,16 +29,8 @@ function LoginForm(props) {
 	const [errors, setErrors] = useState({});
 
 	const [values, setValues] = useState({
-		firstName: '',
-		lastName: '',
 		email: '',
-		phone: '',
-		gender: '',
-		stateOfRes: '',
-		location: '',
 		password: '',
-		confirmPassword: '',
-		userRole: props.userRole,
 	});
 
 	const onChange = (event, { name, value }) => {
@@ -49,7 +41,7 @@ function LoginForm(props) {
 		update(_, { data: { login: userData } }) {
 			context.login(userData);
 			 
-			props.history.push('/general-dashboard');
+			props.history.push('/dashboard');
 		},
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);
@@ -63,7 +55,7 @@ function LoginForm(props) {
 	};
 	return (
 		<div>
-			<Segment>
+			<Segment style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
 				<Form className={loading ? 'loading' : ''} size='large' onSubmit={onSubmit}>
 					<Form.Input
 						fluid
@@ -94,7 +86,7 @@ function LoginForm(props) {
 					</Button>
 				</Form>
 			</Segment>
-			<Message style={{ textAlign: 'center' }}>
+			<Message  style={{ textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
 				Not registered yet? <Link to='/become-a-tutor'>Sign Up as a Tutor</Link> |{' '}
 				<Link to='/get-a-tutor'>Sign Up as a Parent</Link>
 			</Message>

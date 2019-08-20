@@ -32,6 +32,13 @@ export default function NavBar() {
 				/>
 				<Menu.Item
 					as={Link}
+					name='dashboard'
+					active={activeItem === 'dashboard'}
+					onClick={handleItemClick}
+					to='/dashboard'
+				/>
+				<Menu.Item
+					as={Link}
 					name='contact-us'
 					active={activeItem === 'contact-us'}
 					onClick={handleItemClick}

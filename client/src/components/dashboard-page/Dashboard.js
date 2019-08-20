@@ -1,37 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Segment, Header, Image, Menu } from 'semantic-ui-react';
-import Axios from 'axios';
 
 import NavBar from '../navbar/NavBar';
-import getInfoFromURL from './getInfoFromURL';
+import { AuthContext } from '../../context/auth';
 
-const TutorDashborad = () => {
-	const [userProfile, setUserProfile] = useState({});
+const GeneralDashborad = () => {
+	const { user } = useContext(AuthContext);
+
 	const showProfileDetails = event => {};
-	const showTutorRequests = event => {};
+	const showMyRequests = event => {};
 	const showSchedule = event => {};
 	const showContacts = event => {};
-	const userEmail = getInfoFromURL();
-
-	useEffect(() => {
-		Axios.get(`http://localhost:3000/users?email=${userEmail}`)
-			.then(data => data.data)
-			.then(data => {
-				const user = data[0];
-				const requiredDetails = {
-					firstName: user.firstName,
-					lastName: user.lastName,
-					email: user.email,
-					phone: user.phone,
-					gender: user.gender,
-					stateOfRes: user.stateOfRes,
-					location: user.location,
-					userRole: user.userRole,
-				};
-				setUserProfile(requiredDetails);
-			});
-	}, [userEmail]);
 
 	return (
 		<>
@@ -66,21 +46,22 @@ const TutorDashborad = () => {
 							<Link to='' onClick={showContacts} className='item'>
 								My Contacts
 							</Link>
-							<Link to='' onClick={showTutorRequests} className='item'>
-								Tutor Requests
+							<Link to='' onClick={showMyRequests} className='item'>
+								My Requests
 							</Link>
+							{user.userRole === 'general' ? (
+								<Link to='/become-a-tutor' className='item'>
+									Become a tutor
+								</Link>
+							) : null}
 							<Link to='' className='item'>
 								Others
 							</Link>
-							<Link to='' className='item'>
-								Others
-							</Link>
-							<Link to='' className='item'>
-								Others
-							</Link>
-							<Link to='/' className='item'>
-								Log out
-							</Link>
+							{user.userRole === 'tutor' ? (
+								<Link to='' className='item'>
+									Upload certificates
+								</Link>
+							) : null}
 							<Link to='/' className='item'>
 								Delete account
 							</Link>
@@ -89,44 +70,44 @@ const TutorDashborad = () => {
 					<Grid.Column width={14} style={{ overflowY: 'scroll', height: '50rem', paddingTop: '1.5rem' }}>
 						<Grid className='ui two column stackable grid'>
 							<Grid.Row>
-								<Grid.Column className='ui aligned' width={8}>
+								<Grid.Column className='ui aligned'>
 									<Segment>
 										<Image src='/assets/profileimage.svg' style={{ width: '50%', margin: '0 25%' }} />
 										<Header as='h2' className='ui center aligned'>
-											{userProfile.firstName} {userProfile.lastName}, {userProfile.userRole}
+											{user.firstName} {user.lastName}
 										</Header>
 										<Grid className='ui two column stackable grid'>
 											<Grid.Row>
 												<Grid.Column>
 													<p>
-														<i className='icon mail' /> {userProfile.email}
+														<i className='icon mail' /> {user.email}
 													</p>
 												</Grid.Column>
 												<Grid.Column>
 													<p>
-														<i className='icon phone' /> {userProfile.phone}
+														<i className='icon phone' /> {user.phone}
 													</p>
 												</Grid.Column>
 											</Grid.Row>
 											<Grid.Row>
 												<Grid.Column>
 													<p>
-														<i className='icon user' /> {userProfile.gender}
+														<i className='icon user' /> {user.gender}
 													</p>
 												</Grid.Column>
 												<Grid.Column>
 													<p>
-														<i className='icon map marker alternate' /> {userProfile.location}, {userProfile.stateOfRes}
+														<i className='icon map marker alternate' /> {user.location}, {user.stateOfRes}
 													</p>
 												</Grid.Column>
 											</Grid.Row>
 										</Grid>
 									</Segment>
 								</Grid.Column>
-								<Grid.Column width={8}>
+								<Grid.Column>
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-											 UPCOMING LESSONS
+											UPCOMING LESSONS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
@@ -135,23 +116,45 @@ const TutorDashborad = () => {
 						</Grid>
 						<Grid className='ui two column stackable grid'>
 							<Grid.Row>
-								<Grid.Column width={8}>
+								<Grid.Column>
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-										CERTIFICATION
+											PENDING REQUESTS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
 								</Grid.Column>
-								<Grid.Column width={8}>
+								<Grid.Column>
 									<Segment>
 										<Header as='h3' className='ui center aligned'>
-										CONTACTS
+											CONTACTS
 										</Header>
 										<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
 									</Segment>
 								</Grid.Column>
 							</Grid.Row>
+						</Grid>
+						<Grid className='ui two column stackable grid'>
+							{user.userRole === 'tutor' ? (
+								<Grid.Row>
+									<Grid.Column>
+										<Segment>
+											<Header as='h3' className='ui center aligned'>
+												CERTIFICATION
+											</Header>
+											<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+										</Segment>
+									</Grid.Column>
+									<Grid.Column>
+										<Segment>
+											<Header as='h3' className='ui center aligned'>
+												CONTACTS
+											</Header>
+											<Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+										</Segment>
+									</Grid.Column>
+								</Grid.Row>
+							) : null}
 						</Grid>
 					</Grid.Column>
 				</Grid.Row>
@@ -160,4 +163,4 @@ const TutorDashborad = () => {
 	);
 };
 
-export default TutorDashborad;
+export default GeneralDashborad;
