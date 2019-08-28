@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { AuthContext } from '../../context/auth';
 
 export default function RequestCard(props) {
-	const { id, createdAt, subjects, childGender, childAge, childClass, tutorGender, location } = props.request;
+	const { user } = useContext(AuthContext);
+
+	const { id, createdAt, subjects, childGender, childAge, childClass, tutorGender, location, userId } = props.request;
 
 	function genderImage(childGender) {
 		if (childGender === 'Male') {
@@ -61,16 +64,25 @@ export default function RequestCard(props) {
 						</div>
 					</Card.Description>
 				</Card.Content>
-				<Card.Content extra>
-					<div className='ui two buttons'>
-						<Button as={Link} to={`/tutor-requests/${id}`} onClick={viewRequest} basic size='small' color='green'>
-							View
-						</Button>
-						<Button as={Link} to={`/tutor-requests/${id}`} onClick={deleteRequest} size='small' basic color='red'>
-							Delete
-						</Button>
-					</div>
-				</Card.Content>
+				{user ? (
+					<Card.Content extra>
+						<div className='ui three buttons'>
+							<Button as={Link} to={`/tutor-requests/${id}`} onClick={viewRequest} basic size='small' color='green'>
+								View
+							</Button>
+							{user.id === userId ? (
+								<>
+									<Button as={Link} to={`/tutor-requests/${id}`} size='small' basic color='blue'>
+										Edit
+									</Button>
+									<Button as={Link} to={`/tutor-requests/${id}`} onClick={deleteRequest} size='small' basic color='red'>
+										Delete
+									</Button>
+								</>
+							) : null}
+						</div>
+					</Card.Content>
+				) : null}
 			</Card>
 		</div>
 	);

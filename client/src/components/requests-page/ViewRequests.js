@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NavBar from '../navbar/NavBar';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Grid } from 'semantic-ui-react';
 import RequestCard from './RequestCard';
 import Stats from '../statistics/Stats';
+import AddRequestModal from '../add-request/AddRequestModal';
+import { AuthContext } from '../../context/auth';
+
 // import Pagination from '../pagination/Pagination';
 
 const FETCH_REQUEST_QUERY = gql`
@@ -25,6 +28,8 @@ const FETCH_REQUEST_QUERY = gql`
 `;
 
 export default function ViewRequests() {
+	const { user } = useContext(AuthContext);
+
 	const {
 		loading,
 		data: { getTutorRequests: tutorRequests },
@@ -45,12 +50,13 @@ export default function ViewRequests() {
 			>
 				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '10px' }}>
 					<header>
-						<NavBar/>
+						<NavBar />
 					</header>
 				</div>
 			</div>
 			<div style={{ padding: '0em 2em' }}>
 				<Stats />
+				{user ? <AddRequestModal /> : null}
 				<Grid stackable columns={3}>
 					<Grid.Row />
 					<Grid.Row>
