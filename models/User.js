@@ -5,7 +5,10 @@ const userSChema = new Schema({
 	lastName: String,
 	email: {type: String, lowercase: true},
 	phone: String,
-	gender: String,
+	gender: {
+		type: String,
+		enum: ['Male', 'Female', 'Others']
+	},
 	stateOfRes: String,
 	location: String,
 	password: String,

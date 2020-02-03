@@ -58,7 +58,6 @@ export default function ViewRequests() {
 				<Stats />
 				{user ? <AddRequestModal /> : null}
 				<Grid stackable columns={3}>
-					<Grid.Row />
 					<Grid.Row>
 						{loading ? (
 							<h3>Loading Requests</h3>

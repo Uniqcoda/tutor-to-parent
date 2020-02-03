@@ -8,11 +8,17 @@ const tutorRequestSChema = new Schema({
 	userEmail: String,
 	childFullName: String,
 	childAge: Number,
-	childGender: String,
+	childGender: {
+		type: String,
+		enum: ['Male', 'Female', 'Others']
+	},
 	childClass: String,
 	homeAddress: String,
 	subjects: [String],
-	tutorGender: String,
+	tutorGender: {
+		type: String,
+		enum: ['Male', 'Female', 'Others']
+	},
 	location: String,
 	createdAt: String,
 });
