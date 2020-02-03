@@ -7,7 +7,7 @@ const tutorRequestSChema = new Schema({
 	},
 	userEmail: String,
 	childFullName: String,
-	childAge: Number,
+	childAge: String,
 	childGender: {
 		type: String,
 		enum: ['Male', 'Female', 'Others']

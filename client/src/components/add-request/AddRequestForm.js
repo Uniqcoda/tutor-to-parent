@@ -7,10 +7,10 @@ import { AuthContext } from '../../context/auth';
 const ADD_REQUEST = gql`
 	mutation tutorRequest(
 		$childFullName: String!
-		$childAge: Int!
+		$childAge: String!
 		$childGender: String!
 		$childClass: String!
-		$homeAddress: String
+		$homeAddress: String!
 		$subjects: [String]!
 		$tutorGender: String!
 		$location: String!
@@ -61,7 +61,7 @@ function AddRequestForm(props) {
 
 	const [values, setValues] = useState({
 		childFullName: '',
-		childAge: 0,
+		childAge: '0',
 		childGender: '',
 		childClass: '',
 		homeAddress: '',
@@ -78,9 +78,11 @@ function AddRequestForm(props) {
 		update(_, result) {
 			console.log(result);
 
-			props.history.push('/tutor-requests');
+			// props.history.push('/tutor-requests');
 		},
 		onError(err) {
+			console.log(err);
+			
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);
 		},
 		variables: values,
