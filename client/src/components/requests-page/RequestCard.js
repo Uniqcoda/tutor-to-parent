@@ -32,16 +32,16 @@ export default function RequestCard(props) {
 				<Card.Content>
 					<Image floated='right' size='mini' src={genderImage(childGender)} />
 					<Card.Header>Tutor Request</Card.Header>
-					<Card.Meta>{moment(createdAt).fromNow(true)}</Card.Meta>
+					<Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
 					<Card.Description>
 						<p>
 							<span>
 								<strong> Gender: </strong>
-								{childGender}{' '}
+								{childGender}
 							</span>
 							<span style={{ marginLeft: '3px' }}>
 								<strong>Age: </strong>
-								{childAge}{' '}
+								{childAge}
 							</span>
 							<span style={{ marginLeft: '3px' }}>
 								<strong>Class: </strong>
