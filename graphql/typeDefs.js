@@ -25,6 +25,7 @@ const typeDefs = gql`
 		homeAddress: String
 		subjects: [String]
 		tutorGender: String
+		state: String
 		location: String
 		createdAt: String
 	}
@@ -48,6 +49,7 @@ const typeDefs = gql`
 		homeAddress: String!
 		subjects: [String]!
 		tutorGender: String!
+		state: String!
 		location: String!
 	}
 	type Query {

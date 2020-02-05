@@ -19,6 +19,7 @@ const tutorRequestSChema = new Schema({
 		type: String,
 		enum: ['Male', 'Female', 'Others']
 	},
+	state: String,
 	location: String,
 	createdAt: String,
 });

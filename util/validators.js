@@ -69,6 +69,7 @@ module.exports.validateRequestInput = (
 	homeAddress,
 	subjects,
 	tutorGender,
+	state,
 	location
 ) => {
 	const errors = {};
@@ -92,6 +93,9 @@ module.exports.validateRequestInput = (
 	}
 	if (tutorGender === '') {
 		errors.tutorGender = "Tutor's gender must not be empty";
+	}
+	if (state.trim() === '') {
+		errors.state = 'State must not be empty';
 	}
 	if (location.trim() === '') {
 		errors.location = 'Location must not be empty';

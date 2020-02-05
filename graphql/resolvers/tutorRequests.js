@@ -42,6 +42,7 @@ const resolvers = {
 					homeAddress,
 					subjects,
 					tutorGender,
+					state,
 					location,
 				},
 			},
@@ -56,6 +57,7 @@ const resolvers = {
 				homeAddress,
 				subjects,
 				tutorGender,
+				state,
 				location
 			);
 			if (!valid) {
@@ -74,6 +76,7 @@ const resolvers = {
 				homeAddress,
 				subjects,
 				tutorGender,
+				state,
 				location,
 				createdAt: new Date().toISOString(),
 			});
