@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-import { AuthContext } from '../../context/auth';
+import { FETCH_REQUEST_QUERY } from '../../utils/graphql';
 
 const ADD_REQUEST = gql`
 	mutation tutorRequest(
@@ -43,7 +43,6 @@ const ADD_REQUEST = gql`
 `;
 
 function AddRequestForm(props) {
-	const context = useContext(AuthContext);
 
 	const selectLocation = [
 		{ key: 'l', text: 'Lekki', value: 'Lekki' },
@@ -77,10 +76,20 @@ function AddRequestForm(props) {
 	};
 
 	const [data, { loading }] = useMutation(ADD_REQUEST, {
-		update(_, { data: { tutorRequest: requestData } }) {
-			context.addTutorRequest(requestData);
+		update(proxy, { data: { tutorRequest: requestData } }) {
+			const tutorRequests = proxy.readQuery({
+				query: FETCH_REQUEST_QUERY
+			});
+
+			tutorRequests.getTutorRequests = [
+				requestData,
+				...tutorRequests.getTutorRequests
+			];
 			setValues(initialValues);
-			// props.history.push('/tutor-requests');
+			console.log(tutorRequests);
+			
+			proxy.writeQuery({ query: FETCH_REQUEST_QUERY, tutorRequests });
+			
 		},
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);

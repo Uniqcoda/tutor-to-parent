@@ -1,38 +1,21 @@
 import React, { useContext } from 'react';
-import NavBar from '../navbar/NavBar';
-import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Grid } from 'semantic-ui-react';
+import NavBar from '../navbar/NavBar';
 import RequestCard from './RequestCard';
 import Stats from '../statistics/Stats';
 import AddRequestModal from '../add-request/AddRequestModal';
 import { AuthContext } from '../../context/auth';
+import { FETCH_REQUEST_QUERY } from '../../utils/graphql';
 
 // import Pagination from '../pagination/Pagination';
-
-const FETCH_REQUEST_QUERY = gql`
-	{
-		getTutorRequests {
-			id
-			userId
-			childFullName
-			childAge
-			childGender
-			childClass
-			subjects
-			tutorGender
-			location
-			createdAt
-		}
-	}
-`;
 
 export default function ViewRequests() {
 	const { user } = useContext(AuthContext);
 
 	const {
 		loading,
-		data: { getTutorRequests: tutorRequests },
+		data: { getTutorRequests: tutorRequests }
 	} = useQuery(FETCH_REQUEST_QUERY);
 
 	return (
@@ -45,10 +28,16 @@ export default function ViewRequests() {
 					backgroundSize: 'cover',
 					width: '100%',
 					minHeight: '10px',
-					padding: '0px',
+					padding: '0px'
 				}}
 			>
-				<div style={{ backgroundColor: 'rgba(0, 0, 0, 0.54)', width: '100%', minHeight: '10px' }}>
+				<div
+					style={{
+						backgroundColor: 'rgba(0, 0, 0, 0.54)',
+						width: '100%',
+						minHeight: '10px'
+					}}
+				>
 					<header>
 						<NavBar />
 					</header>
@@ -65,14 +54,17 @@ export default function ViewRequests() {
 							tutorRequests &&
 							tutorRequests.map(request => {
 								return (
-									<Grid.Column key={request.id} style={{ marginBottom: '20px' }}>
+									<Grid.Column
+										key={request.id}
+										style={{ marginBottom: '20px' }}
+									>
 										<RequestCard request={request} />
 									</Grid.Column>
 								);
 							})
 						)}
 					</Grid.Row>
-				</Grid>{' '}
+				</Grid>
 				{/* <Pagination /> */}
 			</div>
 		</>
