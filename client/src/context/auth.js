@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 const initialState = {
 	user: null,
+	tutorRequest: null
 };
 
 if (localStorage.getItem('jwtToken')) {
@@ -19,6 +20,8 @@ const AuthContext = createContext({
 	user: null,
 	login: userData => {},
 	logout: () => {},
+	tutorRequest: null,
+	addTutorRequest: requestData => {}
 });
 
 function authReducer(state, action) {
@@ -26,12 +29,17 @@ function authReducer(state, action) {
 		case 'LOGIN':
 			return {
 				...state,
-				user: action.payload,
+				user: action.payload
 			};
 		case 'LOGOUT':
 			return {
 				...state,
-				user: null,
+				user: null
+			};
+		case 'TUTORREQUEST':
+			return {
+				...state,
+				tutorRequest: action.payload
 			};
 
 		default:
@@ -46,11 +54,26 @@ function AuthProvider(props) {
 		localStorage.setItem('jwtToken', userData.token);
 		dispatch({ type: 'LOGIN', payload: userData });
 	}
+	function addTutorRequest(requestData) {
+		// localStorage.setItem('jwtToken', userData.token);
+		dispatch({ type: 'TUTORREQUEST', payload: requestData });
+	}
 	function logout() {
 		localStorage.removeItem('jwtToken');
 		dispatch({ type: 'LOGOUT' });
 	}
-	return <AuthContext.Provider value={{ user: state.user, login, logout }} {...props} />;
+	return (
+		<AuthContext.Provider
+			value={{
+				user: state.user,
+				tutorRequest: state.tutorRequest,
+				login,
+				logout,
+				addTutorRequest
+			}}
+			{...props}
+		/>
+	);
 }
 
 export { AuthContext, AuthProvider };
