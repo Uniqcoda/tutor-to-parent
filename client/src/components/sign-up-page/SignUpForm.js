@@ -3,42 +3,10 @@ import { Form, Button } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import { SIGN_UP } from '../../utils/graphql';
 import { AuthContext } from '../../context/auth';
-import ng_states from '../../states';
+import { selectGender, selectState, getLGAs } from '../../utils/location';
 
 function SignUpForm(props) {
 	const context = useContext(AuthContext);
-
-	const selectState = [];
-	ng_states.forEach(state => {
-		selectState.push({
-			key: state.id,
-			text: state.name,
-			value: state.name
-		});
-	});
-
-	const getLGAs = stateName => {
-		const selectLocation = [];
-		for (let i = 0; i < ng_states.length; i++) {
-			if (ng_states[i].name === stateName) {
-				ng_states[i].locals.forEach(local => {
-					selectLocation.push({
-						key: local.id,
-						text: local.name,
-						value: local.name
-					});
-				});
-				return selectLocation;
-			}
-		}
-		return [{ key: 1, text: 'None', value: 'None' }];
-	};
-
-	const selectGender = [
-		{ key: 'm', text: 'Male', value: 'Male' },
-		{ key: 'f', text: 'Female', value: 'Female' },
-		{ key: 'o', text: 'Others', value: 'Others' }
-	];
 
 	const [errors, setErrors] = useState({});
 
@@ -48,8 +16,8 @@ function SignUpForm(props) {
 		email: '',
 		phone: '',
 		gender: '',
-		stateOfRes: "",
-		location: "",
+		stateOfRes: '',
+		location: '',
 		password: '',
 		confirmPassword: '',
 		userRole: props.userRole

@@ -3,45 +3,12 @@ import { Form, Button } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import { FETCH_REQUEST_QUERY, ADD_REQUEST } from '../../utils/graphql';
 import { AuthContext } from '../../context/auth';
-
-import ng_states from '../../states';
+import { selectState, selectGender, getLGAs } from '../../utils/location';
 
 function AddRequestForm(props) {
-	const selectState = [];
-	ng_states.forEach(state => {
-		selectState.push({
-			key: state.id,
-			text: state.name,
-			value: state.name
-		});
-	});
-
-	const getLGAs = stateName => {
-		const selectLocation = [];
-		for (let i = 0; i < ng_states.length; i++) {
-			if (ng_states[i].name === stateName) {
-				ng_states[i].locals.forEach(local => {
-					selectLocation.push({
-						key: local.id,
-						text: local.name,
-						value: local.name
-					});
-				});
-				return selectLocation;
-			}
-		}
-		return [{ key: 1, text: 'None', value: 'None' }];
-	};
-
-	const selectGender = [
-		{ key: 'm', text: 'Male', value: 'Male' },
-		{ key: 'f', text: 'Female', value: 'Female' },
-		{ key: 'o', text: 'Others', value: 'Others' }
-	];
-
 	const [errors, setErrors] = useState({});
 
-	const { user } = useContext(AuthContext);	
+	const { user } = useContext(AuthContext);
 	const initialValues = {
 		childFullName: '',
 		childAge: '0',
@@ -80,7 +47,7 @@ function AddRequestForm(props) {
 		variables: values
 	});
 
-	const onSubmit = event => {				
+	const onSubmit = event => {
 		event.preventDefault();
 		data();
 	};
