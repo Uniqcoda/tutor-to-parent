@@ -11,6 +11,7 @@ export const FETCH_REQUEST_QUERY = gql`
     childClass
     subjects
     tutorGender
+    state
     location
     createdAt
   }

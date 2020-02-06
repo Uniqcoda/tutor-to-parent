@@ -74,7 +74,7 @@ function SignUpForm(props) {
 				return selectLocation;
 			}
 		}
-		return [{ name: 'None', id: 1 }];
+		return [{ key: 1, text: 'None', value: 'None' }];
 	};
 
 	const selectGender = [
@@ -91,8 +91,8 @@ function SignUpForm(props) {
 		email: '',
 		phone: '',
 		gender: '',
-		stateOfRes: "Abia",
-		location: "Aba South",
+		stateOfRes: "",
+		location: "",
 		password: '',
 		confirmPassword: '',
 		userRole: props.userRole
@@ -206,6 +206,7 @@ function SignUpForm(props) {
 						name='stateOfRes'
 						options={selectState}
 						placeholder='state'
+						value={values.stateOfRes}
 						error={errors.stateOfRes ? true : false}
 						onChange={onChange}
 					/>
@@ -214,6 +215,7 @@ function SignUpForm(props) {
 						name='location'
 						options={getLGAs(values.stateOfRes)}
 						placeholder='location'
+						value={values.location}
 						error={errors.location ? true : false}
 						onChange={onChange}
 					/>
@@ -224,6 +226,7 @@ function SignUpForm(props) {
 						name='gender'
 						options={selectGender}
 						placeholder='gender'
+						value={values.gender}
 						error={errors.gender ? true : false}
 						onChange={onChange}
 					/>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 import NavBar from '../navbar/NavBar';
 import RequestCard from './RequestCard';
 import Stats from '../statistics/Stats';
@@ -45,11 +45,16 @@ export default function ViewRequests() {
 			</div>
 			<div style={{ padding: '0em 2em' }}>
 				<Stats />
-				{user ? <AddRequestModal /> : null}
+				{user && <AddRequestModal />}
+				{/* {user && (
+					<Button color='blue' fluid size='large'>
+						My Requests
+					</Button>
+				)} */}
 				<Grid stackable columns={3}>
 					<Grid.Row>
 						{loading ? (
-							<h3>Loading Requests</h3>
+							<h3>Loading Requests...</h3>
 						) : (
 							tutorRequests &&
 							tutorRequests.map(request => {

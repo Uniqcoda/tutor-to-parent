@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/auth';
 export default function RequestCard(props) {
 	const { user } = useContext(AuthContext);
 
-	const { id, createdAt, subjects, childGender, childAge, childClass, tutorGender, location, userId } = props.request;
+	const { id, createdAt, subjects, childGender, childAge, childClass, tutorGender, state, location, userId } = props.request;
 
 	function genderImage(childGender) {
 		if (childGender === 'Male') {
@@ -54,7 +54,7 @@ export default function RequestCard(props) {
 						</p>
 						<p>
 							<strong>Location: </strong>
-							{location}
+							{location}, {state}
 						</p>
 						<div>
 							<strong>Subjects: </strong>

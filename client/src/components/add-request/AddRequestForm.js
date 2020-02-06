@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { FETCH_REQUEST_QUERY } from '../../utils/graphql';
+import { AuthContext } from '../../context/auth';
+
+import ng_states from '../../states';
 
 const ADD_REQUEST = gql`
 	mutation tutorRequest(
@@ -13,6 +16,7 @@ const ADD_REQUEST = gql`
 		$homeAddress: String!
 		$subjects: [String]!
 		$tutorGender: String!
+		$state: String!
 		$location: String!
 	) {
 		tutorRequest(
@@ -24,6 +28,7 @@ const ADD_REQUEST = gql`
 				homeAddress: $homeAddress
 				subjects: $subjects
 				tutorGender: $tutorGender
+				state: $state
 				location: $location
 			}
 		) {
@@ -37,18 +42,39 @@ const ADD_REQUEST = gql`
 			homeAddress
 			subjects
 			tutorGender
+			state
+			location
 			createdAt
 		}
 	}
 `;
 
 function AddRequestForm(props) {
+	const selectState = [];
+	ng_states.forEach(state => {
+		selectState.push({
+			key: state.id,
+			text: state.name,
+			value: state.name
+		});
+	});
 
-	const selectLocation = [
-		{ key: 'l', text: 'Lekki', value: 'Lekki' },
-		{ key: 'i', text: 'Ikeja', value: 'Ikeja' },
-		{ key: 'a', text: 'Apapa', value: 'Apapa' }
-	];
+	const getLGAs = stateName => {
+		const selectLocation = [];
+		for (let i = 0; i < ng_states.length; i++) {
+			if (ng_states[i].name === stateName) {
+				ng_states[i].locals.forEach(local => {
+					selectLocation.push({
+						key: local.id,
+						text: local.name,
+						value: local.name
+					});
+				});
+				return selectLocation;
+			}
+		}
+		return [{ key: 1, text: 'None', value: 'None' }];
+	};
 
 	const selectGender = [
 		{ key: 'm', text: 'Male', value: 'Male' },
@@ -58,6 +84,7 @@ function AddRequestForm(props) {
 
 	const [errors, setErrors] = useState({});
 
+	const { user } = useContext(AuthContext);	
 	const initialValues = {
 		childFullName: '',
 		childAge: '0',
@@ -66,7 +93,8 @@ function AddRequestForm(props) {
 		homeAddress: '',
 		subjects: '',
 		tutorGender: '',
-		location: ''
+		state: user.stateOfRes,
+		location: user.location
 	};
 
 	const [values, setValues] = useState(initialValues);
@@ -86,19 +114,16 @@ function AddRequestForm(props) {
 				...tutorRequests.getTutorRequests
 			];
 			setValues(initialValues);
-			console.log(tutorRequests);
-			
+
 			proxy.writeQuery({ query: FETCH_REQUEST_QUERY, tutorRequests });
-			
 		},
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);
-			console.log(errors);
 		},
 		variables: values
 	});
 
-	const onSubmit = event => {
+	const onSubmit = event => {				
 		event.preventDefault();
 		data();
 	};
@@ -139,6 +164,7 @@ function AddRequestForm(props) {
 						name='childGender'
 						options={selectGender}
 						placeholder='Gender'
+						value={values.childGender}
 						error={errors.childGender ? true : false}
 						onChange={onChange}
 					/>
@@ -178,18 +204,29 @@ function AddRequestForm(props) {
 				</Form.Group>
 				<Form.Group widths='equal'>
 					<Form.Select
-						label="Tutors's Gender"
+						label="Tutor's Gender"
 						name='tutorGender'
 						options={selectGender}
 						placeholder='Gender'
+						value={values.tutorGender}
 						error={errors.tutorGender ? true : false}
+						onChange={onChange}
+					/>
+					<Form.Select
+						label='State of Residence'
+						name='state'
+						options={selectState}
+						placeholder='state'
+						value={values.state}
+						error={errors.state ? true : false}
 						onChange={onChange}
 					/>
 					<Form.Select
 						label='Location'
 						name='location'
-						options={selectLocation}
+						options={getLGAs(values.state)}
 						placeholder='location'
+						value={values.location}
 						error={errors.location ? true : false}
 						onChange={onChange}
 					/>
