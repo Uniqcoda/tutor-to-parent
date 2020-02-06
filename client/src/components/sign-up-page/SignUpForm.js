@@ -1,52 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-
+import { SIGN_UP } from '../../utils/graphql';
 import { AuthContext } from '../../context/auth';
 import ng_states from '../../states';
-
-const SIGN_UP = gql`
-	mutation signUp(
-		$firstName: String!
-		$lastName: String!
-		$email: String!
-		$phone: String!
-		$gender: String!
-		$stateOfRes: String!
-		$location: String!
-		$password: String!
-		$confirmPassword: String!
-		$userRole: String!
-	) {
-		signUp(
-			signUpInput: {
-				firstName: $firstName
-				lastName: $lastName
-				email: $email
-				phone: $phone
-				gender: $gender
-				stateOfRes: $stateOfRes
-				location: $location
-				password: $password
-				confirmPassword: $confirmPassword
-				userRole: $userRole
-			}
-		) {
-			id
-			firstName
-			lastName
-			email
-			phone
-			gender
-			stateOfRes
-			location
-			userRole
-			createdAt
-			token
-		}
-	}
-`;
 
 function SignUpForm(props) {
 	const context = useContext(AuthContext);

@@ -1,53 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-import { FETCH_REQUEST_QUERY } from '../../utils/graphql';
+import { FETCH_REQUEST_QUERY, ADD_REQUEST } from '../../utils/graphql';
 import { AuthContext } from '../../context/auth';
 
 import ng_states from '../../states';
-
-const ADD_REQUEST = gql`
-	mutation tutorRequest(
-		$childFullName: String!
-		$childAge: String!
-		$childGender: String!
-		$childClass: String!
-		$homeAddress: String!
-		$subjects: [String]!
-		$tutorGender: String!
-		$state: String!
-		$location: String!
-	) {
-		tutorRequest(
-			tutorRequestInput: {
-				childFullName: $childFullName
-				childAge: $childAge
-				childGender: $childGender
-				childClass: $childClass
-				homeAddress: $homeAddress
-				subjects: $subjects
-				tutorGender: $tutorGender
-				state: $state
-				location: $location
-			}
-		) {
-			id
-			userId
-			userEmail
-			childFullName
-			childAge
-			childGender
-			childClass
-			homeAddress
-			subjects
-			tutorGender
-			state
-			location
-			createdAt
-		}
-	}
-`;
 
 function AddRequestForm(props) {
 	const selectState = [];
@@ -183,9 +140,9 @@ function AddRequestForm(props) {
 				<Form.Group widths='equal'>
 					<Form.Input
 						fluid
-						label='Home Address'
+						label='Address'
 						id='homeAddress'
-						placeholder='Address'
+						placeholder='Address for lessons'
 						name='homeAddress'
 						value={values.homeAddress}
 						error={errors.homeAddress ? true : false}

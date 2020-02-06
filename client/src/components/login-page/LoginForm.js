@@ -1,28 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Form, Message, Segment } from 'semantic-ui-react';
-import gql from 'graphql-tag';
+import { LOG_IN } from '../../utils/graphql';
 import { useMutation } from '@apollo/react-hooks';
 
 import { AuthContext } from '../../context/auth';
-
-const LOG_IN = gql`
-	mutation signUp($email: String!, $password: String!) {
-		login(email: $email, password: $password) {
-			id
-			firstName
-			lastName
-			email
-			phone
-			gender
-			stateOfRes
-			location
-			userRole
-			createdAt
-			token
-		}
-	}
-`;
 
 function LoginForm(props) {
 	const context = useContext(AuthContext);
