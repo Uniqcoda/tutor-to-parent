@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/auth';
 export default function RequestCard(props) {
 	const { user } = useContext(AuthContext);
 
-	const { id, createdAt, subjects, childGender, childAge, childClass, tutorGender, location, userId } = props.request;
+	const { id, createdAt, subjects, childGender, childAge, childClass, tutorGender, state, location, userId } = props.request;
 
 	function genderImage(childGender) {
 		if (childGender === 'Male') {
@@ -32,16 +32,16 @@ export default function RequestCard(props) {
 				<Card.Content>
 					<Image floated='right' size='mini' src={genderImage(childGender)} />
 					<Card.Header>Tutor Request</Card.Header>
-					<Card.Meta>{moment(createdAt).fromNow(true)}</Card.Meta>
+					<Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
 					<Card.Description>
 						<p>
 							<span>
 								<strong> Gender: </strong>
-								{childGender}{' '}
+								{childGender}
 							</span>
 							<span style={{ marginLeft: '3px' }}>
 								<strong>Age: </strong>
-								{childAge}{' '}
+								{childAge}
 							</span>
 							<span style={{ marginLeft: '3px' }}>
 								<strong>Class: </strong>
@@ -54,7 +54,7 @@ export default function RequestCard(props) {
 						</p>
 						<p>
 							<strong>Location: </strong>
-							{location}
+							{location}, {state}
 						</p>
 						<div>
 							<strong>Subjects: </strong>

@@ -1,6 +1,6 @@
 [
 	{
-			"name": "Abia State",
+			"name": "Abia",
 			"id": 1,
 			"locals": [
 				{ "name": "Aba South", "id": 1 },
@@ -22,7 +22,7 @@
 			]
 	},
 	{
-			"name": "Adamawa State",
+			"name": "Adamawa",
 			"id": 2,
 			"locals": [
 				{ "name": "Fufure", "id": 1 },
@@ -48,7 +48,7 @@
 			]
 	},
 	{
-			"name": "Akwa Ibom State",
+			"name": "Akwa Ibom",
 			"id": 3,
 			"locals": [
 				{ "name": "Eastern Obolo", "id": 1 },
@@ -84,7 +84,7 @@
 			]
 	},
 	{
-			"name": "Anambra State",
+			"name": "Anambra",
 			"id": 4,
 			"locals": [
 				{ "name": "Anambra East", "id": 1 },
@@ -110,7 +110,7 @@
 			]
 	},
 	{
-			"name": "Bauchi State",
+			"name": "Bauchi",
 			"id": 5,
 			"locals": [
 				{ "name": "Bauchi", "id": 1 },
@@ -135,7 +135,7 @@
 			]
 	},
 	{
-			"name": "Bayelsa State",
+			"name": "Bayelsa",
 			"id": 6,
 			"locals": [
 				{ "name": "Ekeremor", "id": 1 },
@@ -148,7 +148,7 @@
 			]
 	},
 	{
-			"name": "Benue State",
+			"name": "Benue",
 			"id": 7,
 			"locals": [
 				{ "name": "Apa", "id": 1 },
@@ -176,7 +176,7 @@
 			]
 	},
 	{
-			"name": "Borno State",
+			"name": "Borno",
 			"id": 8,
 			"locals": [
 				{ "name": "Askira/Uba", "id": 1 },
@@ -208,7 +208,7 @@
 			]
 	},
 	{
-			"name": "Cross River State",
+			"name": "Cross River",
 			"id": 9,
 			"locals": [
 				{ "name": "Akamkpa", "id": 1 },
@@ -231,7 +231,7 @@
 			]
 	},
 	{
-			"name": "Delta State",
+			"name": "Delta",
 			"id": 10,
 			"locals": [
 				{ "name": "Aniocha South", "id": 1 },
@@ -261,7 +261,7 @@
 			]
 	},
 	{
-			"name": "Ebonyi State",
+			"name": "Ebonyi",
 			"id": 11,
 			"locals": [
 				{ "name": "Afikpo North", "id": 1 },
@@ -279,7 +279,7 @@
 			]
 	},
 	{
-			"name": "Edo State",
+			"name": "Edo",
 			"id": 12,
 			"locals": [
 				{ "name": "Egor", "id": 1 },
@@ -302,7 +302,7 @@
 			]
 	},
 	{
-			"name": "Ekiti State",
+			"name": "Ekiti",
 			"id": 13,
 			"locals": [
 				{ "name": "Efon", "id": 1 },
@@ -323,7 +323,7 @@
 			]
 	},
 	{
-			"name": "Enugu State",
+			"name": "Enugu",
 			"id": 14,
 			"locals": [
 				{ "name": "Awgu", "id": 1 },
@@ -356,7 +356,7 @@
 			]
 	},
 	{
-			"name": "Gombe State",
+			"name": "Gombe",
 			"id": 16,
 			"locals": [
 				{ "name": "Balanga", "id": 1 },
@@ -372,7 +372,7 @@
 			]
 	},
 	{
-			"name": "Imo State",
+			"name": "Imo",
 			"id": 17,
 			"locals": [
 				{ "name": "Ahiazu Mbaise", "id": 1 },
@@ -404,7 +404,7 @@
 			]
 	},
 	{
-			"name": "Jigawa State",
+			"name": "Jigawa",
 			"id": 18,
 			"locals": [
 				{ "name": "Babura", "id": 1 },
@@ -436,7 +436,7 @@
 			]
 	},
 	{
-			"name": "Kaduna State",
+			"name": "Kaduna",
 			"id": 19,
 			"locals": [
 				{ "name": "Chikun", "id": 1 },
@@ -464,7 +464,7 @@
 			]
 	},
 	{
-			"name": "Kano State",
+			"name": "Kano",
 			"id": 20,
 			"locals": [
 				{ "name": "Albasu", "id": 1 },
@@ -513,7 +513,7 @@
 			]
 	},
 	{
-			"name": "Katsina State",
+			"name": "Katsina",
 			"id": 21,
 			"locals": [
 				{ "name": "Batagarawa", "id": 1 },
@@ -552,7 +552,7 @@
 			]
 	},
 	{
-			"name": "Kebbi State",
+			"name": "Kebbi",
 			"id": 22,
 			"locals": [
 				{ "name": "Arewa Dandi", "id": 1 },
@@ -578,7 +578,7 @@
 			]
 	},
 	{
-			"name": "Kogi State",
+			"name": "Kogi",
 			"id": 23,
 			"locals": [
 				{ "name": "Ajaokuta", "id": 1 },
@@ -604,7 +604,7 @@
 			]
 	},
 	{
-			"name": "Kwara State",
+			"name": "Kwara",
 			"id": 24,
 			"locals": [
 				{ "name": "Baruten", "id": 1 },
@@ -625,7 +625,7 @@
 			]
 	},
 	{
-			"name": "Lagos State",
+			"name": "Lagos",
 			"id": 25,
 			"locals": [
 				{ "name": "Ajeromi-Ifelodun", "id": 1 },
@@ -650,7 +650,7 @@
 			]
 	},
 	{
-			"name": "Nasarawa State",
+			"name": "Nasarawa",
 			"id": 26,
 			"locals": [
 				{ "name": "Awe", "id": 1 },
@@ -668,7 +668,7 @@
 			]
 	},
 	{
-			"name": "Niger State",
+			"name": "Niger",
 			"id": 27,
 			"locals": [
 				{ "name": "Agwara", "id": 1 },
@@ -698,7 +698,7 @@
 			]
 	},
 	{
-			"name": "Ogun State",
+			"name": "Ogun",
 			"id": 28,
 			"locals": [
 				{ "name": "Abeokuta South", "id": 1 },
@@ -723,7 +723,7 @@
 			]
 	},
 	{
-			"name": "Ondo State",
+			"name": "Ondo",
 			"id": 29,
 			"locals": [
 				{ "name": "Akoko North-West", "id": 1 },
@@ -746,7 +746,7 @@
 			]
 	},
 	{
-			"name": "Osun State",
+			"name": "Osun",
 			"id": 30,
 			"locals": [
 				{ "name": "Atakunmosa West", "id": 1 },
@@ -781,7 +781,7 @@
 			]
 	},
 	{
-			"name": "Oyo State",
+			"name": "Oyo",
 			"id": 31,
 			"locals": [
 				{ "name": "Akinyele", "id": 1 },
@@ -819,7 +819,7 @@
 			]
 	},
 	{
-			"name": "Plateau State",
+			"name": "Plateau",
 			"id": 32,
 			"locals": [
 				{ "name": "Barkin Ladi", "id": 1 },
@@ -841,7 +841,7 @@
 			]
 	},
 	{
-			"name": "Rivers State",
+			"name": "Rivers",
 			"id": 33,
 			"locals": [
 				{ "name": "Ahoada East", "id": 1 },
@@ -869,7 +869,7 @@
 			]
 	},
 	{
-			"name": "Sokoto State",
+			"name": "Sokoto",
 			"id": 34,
 			"locals": [
 				{ "name": "Bodinga", "id": 1 },
@@ -897,7 +897,7 @@
 			]
 	},
 	{
-			"name": "Taraba State",
+			"name": "Taraba",
 			"id": 35,
 			"locals": [
 				{ "name": "Bali", "id": 1 },
@@ -918,7 +918,7 @@
 			]
 	},
 	{
-			"name": "Yobe State",
+			"name": "Yobe",
 			"id": 36,
 			"locals": [
 				{ "name": "Bursari", "id": 1 },
@@ -940,7 +940,7 @@
 			]
 	},
 	{
-			"name": "Zamfara State",
+			"name": "Zamfara",
 			"id": 37,
 			"locals": [
 				{ "name": "Bakura", "id": 1 },

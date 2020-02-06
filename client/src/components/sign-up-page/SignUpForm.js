@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
 import { AuthContext } from '../../context/auth';
+import ng_states from '../../states';
 
 const SIGN_UP = gql`
 	mutation signUp(
@@ -49,22 +50,37 @@ const SIGN_UP = gql`
 
 function SignUpForm(props) {
 	const context = useContext(AuthContext);
-	const selectState = [
-		{ key: 'l', text: 'Lagos', value: 'Lagos' },
-		{ key: 'e', text: 'Enugu', value: 'Enugu' },
-		{ key: 'a', text: 'Abuja', value: 'Abuja' },
-	];
 
-	const selectLocation = [
-		{ key: 'l', text: 'Lekki', value: 'Lekki' },
-		{ key: 'i', text: 'Ikeja', value: 'Ikeja' },
-		{ key: 'a', text: 'Apapa', value: 'Apapa' },
-	];
+	const selectState = [];
+	ng_states.forEach(state => {
+		selectState.push({
+			key: state.id,
+			text: state.name,
+			value: state.name
+		});
+	});
+
+	const getLGAs = stateName => {
+		const selectLocation = [];
+		for (let i = 0; i < ng_states.length; i++) {
+			if (ng_states[i].name === stateName) {
+				ng_states[i].locals.forEach(local => {
+					selectLocation.push({
+						key: local.id,
+						text: local.name,
+						value: local.name
+					});
+				});
+				return selectLocation;
+			}
+		}
+		return [{ key: 1, text: 'None', value: 'None' }];
+	};
 
 	const selectGender = [
 		{ key: 'm', text: 'Male', value: 'Male' },
 		{ key: 'f', text: 'Female', value: 'Female' },
-		{ key: 'o', text: 'Others', value: 'Others' },
+		{ key: 'o', text: 'Others', value: 'Others' }
 	];
 
 	const [errors, setErrors] = useState({});
@@ -75,11 +91,11 @@ function SignUpForm(props) {
 		email: '',
 		phone: '',
 		gender: '',
-		stateOfRes: '',
-		location: '',
+		stateOfRes: "",
+		location: "",
 		password: '',
 		confirmPassword: '',
-		userRole: props.userRole,
+		userRole: props.userRole
 	});
 
 	const onChange = (event, { name, value }) => {
@@ -94,7 +110,7 @@ function SignUpForm(props) {
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);
 		},
-		variables: values,
+		variables: values
 	});
 
 	const onSubmit = event => {
@@ -104,7 +120,11 @@ function SignUpForm(props) {
 
 	return (
 		<>
-			<form className={loading ? 'ui form loading' : 'ui form'} size='large' onSubmit={onSubmit}>
+			<form
+				className={loading ? 'ui form loading' : 'ui form'}
+				size='large'
+				onSubmit={onSubmit}
+			>
 				<Form.Group widths='equal'>
 					<Form.Input
 						fluid
@@ -186,14 +206,16 @@ function SignUpForm(props) {
 						name='stateOfRes'
 						options={selectState}
 						placeholder='state'
+						value={values.stateOfRes}
 						error={errors.stateOfRes ? true : false}
 						onChange={onChange}
 					/>
 					<Form.Select
 						label='Location'
 						name='location'
-						options={selectLocation}
+						options={getLGAs(values.stateOfRes)}
 						placeholder='location'
+						value={values.location}
 						error={errors.location ? true : false}
 						onChange={onChange}
 					/>
@@ -204,10 +226,14 @@ function SignUpForm(props) {
 						name='gender'
 						options={selectGender}
 						placeholder='gender'
+						value={values.gender}
 						error={errors.gender ? true : false}
 						onChange={onChange}
 					/>
-					<Form.Checkbox label='By registering, you agree to our terms and policies' required />
+					<Form.Checkbox
+						label='By registering, you agree to our terms and policies'
+						required
+					/>
 				</Form.Group>
 				<Button color='blue' fluid size='large'>
 					Submit

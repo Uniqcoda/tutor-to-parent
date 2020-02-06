@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import AuthRoute from './utils/AuthRoute'
 import Homepage from './components/homepage/HomePage';
 import Footer from './components/footer/Footer';
 import TutorSignUp from './components/sign-up-page/TutorSignUpPage';
@@ -14,9 +15,9 @@ function App() {
 	return (
 		<>
 			<Route path='/' exact component={Homepage} />
-			<Route path='/become-a-tutor' component={TutorSignUp} />
-			<Route path='/get-a-tutor' component={GeneralSignUp} />
-			<Route path='/login' component={Login} />
+			<AuthRoute path='/become-a-tutor' component={TutorSignUp} />
+			<AuthRoute path='/get-a-tutor' component={GeneralSignUp} />
+			<AuthRoute path='/login' component={Login} />
 			<Route path='/dashboard' component={GeneralDashboard} />
 			<Route path='/tutor-requests' component={ViewRequests} />
 			<Route path='/contact-us' component={ContactPage} />

@@ -19,12 +19,13 @@ const typeDefs = gql`
 		userId: String!
 		userEmail: String!
 		childFullName: String
-		childAge: Int
+		childAge: String
 		childGender: String
 		childClass: String
 		homeAddress: String
 		subjects: [String]
 		tutorGender: String
+		state: String
 		location: String
 		createdAt: String
 	}
@@ -42,12 +43,13 @@ const typeDefs = gql`
 	}
 	input TutorRequestInput {
 		childFullName: String!
-		childAge: Int!
+		childAge: String!
 		childGender: String!
 		childClass: String!
 		homeAddress: String!
 		subjects: [String]!
 		tutorGender: String!
+		state: String!
 		location: String!
 	}
 	type Query {
