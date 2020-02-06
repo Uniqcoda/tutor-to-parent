@@ -46,6 +46,7 @@ export default function ViewRequests() {
 			<div style={{ padding: '0em 2em' }}>
 				<Stats />
 				{user && <AddRequestModal />}
+				<div class="ui hidden divider"></div>
 				{/* {user && (
 					<Button color='blue' fluid size='large'>
 						My Requests

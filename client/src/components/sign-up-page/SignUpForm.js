@@ -30,7 +30,7 @@ function SignUpForm(props) {
 	const [data, { loading }] = useMutation(SIGN_UP, {
 		update(_, { data: { signUp: userData } }) {
 			context.login(userData);
-			props.history.push('/dashboard');
+			props.history.push('/tutor-requests');
 		},
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);
