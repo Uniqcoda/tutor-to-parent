@@ -1,87 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-
+import { SIGN_UP } from '../../utils/graphql';
 import { AuthContext } from '../../context/auth';
-import ng_states from '../../states';
-
-const SIGN_UP = gql`
-	mutation signUp(
-		$firstName: String!
-		$lastName: String!
-		$email: String!
-		$phone: String!
-		$gender: String!
-		$stateOfRes: String!
-		$location: String!
-		$password: String!
-		$confirmPassword: String!
-		$userRole: String!
-	) {
-		signUp(
-			signUpInput: {
-				firstName: $firstName
-				lastName: $lastName
-				email: $email
-				phone: $phone
-				gender: $gender
-				stateOfRes: $stateOfRes
-				location: $location
-				password: $password
-				confirmPassword: $confirmPassword
-				userRole: $userRole
-			}
-		) {
-			id
-			firstName
-			lastName
-			email
-			phone
-			gender
-			stateOfRes
-			location
-			userRole
-			createdAt
-			token
-		}
-	}
-`;
+import { selectGender, selectState, getLGAs } from '../../utils/location';
 
 function SignUpForm(props) {
 	const context = useContext(AuthContext);
-
-	const selectState = [];
-	ng_states.forEach(state => {
-		selectState.push({
-			key: state.id,
-			text: state.name,
-			value: state.name
-		});
-	});
-
-	const getLGAs = stateName => {
-		const selectLocation = [];
-		for (let i = 0; i < ng_states.length; i++) {
-			if (ng_states[i].name === stateName) {
-				ng_states[i].locals.forEach(local => {
-					selectLocation.push({
-						key: local.id,
-						text: local.name,
-						value: local.name
-					});
-				});
-				return selectLocation;
-			}
-		}
-		return [{ key: 1, text: 'None', value: 'None' }];
-	};
-
-	const selectGender = [
-		{ key: 'm', text: 'Male', value: 'Male' },
-		{ key: 'f', text: 'Female', value: 'Female' },
-		{ key: 'o', text: 'Others', value: 'Others' }
-	];
 
 	const [errors, setErrors] = useState({});
 
@@ -91,8 +16,8 @@ function SignUpForm(props) {
 		email: '',
 		phone: '',
 		gender: '',
-		stateOfRes: "",
-		location: "",
+		stateOfRes: '',
+		location: '',
 		password: '',
 		confirmPassword: '',
 		userRole: props.userRole
@@ -105,7 +30,7 @@ function SignUpForm(props) {
 	const [data, { loading }] = useMutation(SIGN_UP, {
 		update(_, { data: { signUp: userData } }) {
 			context.login(userData);
-			props.history.push('/dashboard');
+			props.history.push('/tutor-requests');
 		},
 		onError(err) {
 			setErrors(err.graphQLErrors[0].extensions.exception.errors);

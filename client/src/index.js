@@ -12,9 +12,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const httpLink = createHttpLink({
-	uri: 'http://localhost:5000'
+	uri: '/'
 });
-
 const authLink = setContext(() => {
 	const token = localStorage.getItem('jwtToken');
 	return {
