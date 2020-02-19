@@ -1,42 +1,25 @@
 {
-  "name": "personal-pro",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/node": "^10.14.10",
-    "@types/react": "^16.8.22",
-    "@types/react-dom": "^16.8.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "semantic-ui-react": "^0.87.2",
-    "styled-components": "^4.3.2",
-    "typescript": "^3.5.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@testing-library/react": "^8.0.4",
-    "@types/jest": "^24.0.15"
-  }
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"server": "nodemon index.js",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"apollo-server": "^2.8.0",
+		"bcryptjs": "^2.4.3",
+		"concurrently": "^5.1.0",
+		"graphql": "^14.4.2",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.6.7"
+	},
+	"devDependencies": {
+		"nodemon": "^1.19.1"
+	}
 }

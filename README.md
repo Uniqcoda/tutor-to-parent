@@ -23,3 +23,4 @@ This platform will match tutors with parents for private lessons.
 * GraphQL (Apollo)
 * JWT
 * Bycrypt
+
