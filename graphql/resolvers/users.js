@@ -2,10 +2,17 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server-express');
 
-const { validateSignUpInput, validateLoginInput } = require('../../util/validators');
-const { SECRET_KEY } = require('../../config');
+const {
+	validateSignUpInput,
+	validateLoginInput
+} = require('../../util/validators');
+// const { SECRET_KEY } = require('../../config');
 const User = require('../../models/User');
 
+require('dotenv').config();
+process.env = JSON.parse(JSON.stringify(process.env));
+
+const SECRET_KEY = process.env.SECRET;
 function generateToken(user) {
 	return jwt.sign(
 		{
@@ -17,7 +24,7 @@ function generateToken(user) {
 			gender: user.gender,
 			stateOfRes: user.stateOfRes,
 			location: user.location,
-			userRole: user.userRole,
+			userRole: user.userRole
 		},
 		SECRET_KEY,
 		{ expiresIn: '1h' }
@@ -34,19 +41,18 @@ const resolvers = {
 				throw new Error(error);
 			}
 		},
-		async getUser(_, {userId}) {
+		async getUser(_, { userId }) {
 			try {
 				const user = await User.findById(userId);
-        if (user) {
-          return user;
-        } else{
-          throw new Error('User not found');
-
-        }
+				if (user) {
+					return user;
+				} else {
+					throw new Error('User not found');
+				}
 			} catch (error) {
 				throw new Error(error);
 			}
-		},
+		}
 	},
 
 	Mutation: {
@@ -71,7 +77,7 @@ const resolvers = {
 			return {
 				...user._doc,
 				id: user._id,
-				token,
+				token
 			};
 		},
 
@@ -88,8 +94,8 @@ const resolvers = {
 					location,
 					password,
 					confirmPassword,
-					userRole,
-				},
+					userRole
+				}
 			}
 		) {
 			//validate user data
@@ -113,8 +119,8 @@ const resolvers = {
 			if (user) {
 				throw new UserInputError('email already exists in database', {
 					errors: {
-						email: 'This email already exists in database',
-					},
+						email: 'This email already exists in database'
+					}
 				});
 			}
 
@@ -130,7 +136,7 @@ const resolvers = {
 				location,
 				password,
 				userRole,
-				createdAt: new Date().toISOString(),
+				createdAt: new Date().toISOString()
 			});
 			const res = await newUser.save();
 			const token = generateToken(res);
@@ -138,10 +144,10 @@ const resolvers = {
 			return {
 				...res._doc,
 				id: res._id,
-				token,
+				token
 			};
-		},
-	},
+		}
+	}
 };
 
 module.exports = resolvers;
