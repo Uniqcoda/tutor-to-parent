@@ -36,6 +36,6 @@ mongoose
 	.then(() => {
 		console.log('MongoDB connected successfully!');
 
-		return app.listen({ port: 5001 });
+		return app.listen({ port: process.env.PORT });
 	})
 	.then(res => console.log(`Server running at ${res.url}`));
