@@ -62,5 +62,6 @@
 	"bugs": {
 		"url": "https://github.com/Uniqcoda/tutor-to-parent/issues"
 	},
-	"homepage": "https://github.com/Uniqcoda/tutor-to-parent#readme"
+	"homepage": "https://github.com/Uniqcoda/tutor-to-parent#readme",
+	"proxy": "http://localhost:5000"
 }
