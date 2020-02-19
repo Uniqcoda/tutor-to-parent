@@ -12,7 +12,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const httpLink = createHttpLink({
-	uri: '/'
+	uri: '/graphql'
 });
 const authLink = setContext(() => {
 	const token = localStorage.getItem('jwtToken');
